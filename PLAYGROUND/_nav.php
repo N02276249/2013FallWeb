@@ -1,4 +1,28 @@
-    
+<?
+	$pages = array(
+		array(
+			'url' => 'index.php',
+			'section' => 'home',
+			'title' => 'Home'
+			),
+		array(
+			'url' => 'links.php',
+			'section' => 'links',
+			'title' => 'Links'
+			),
+		array(
+			'url' => 'contact.php',
+			'section' => 'contact',
+			'title' => 'Contact Us'
+			)
+		);	
+		
+		$pages[] = array(
+			'url' => 'store.php',
+			'section' => 'store',
+			'title' => 'Buy Our Stuff'
+			);
+?>
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -11,9 +35,14 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="home"><a href="index.php">Home</a></li>
-            <li class="contact"><a href="contact.php">Contact</a></li>
-            <li class="links"><a href="links.php">Links</a></li>
+          	            
+            <? foreach ($pages as $name => $data): ?>
+            	<li class="<?=$data['section']?>">
+            		<a href="<?=$data['url']?>"> <?=$data['title']?> </a>
+        		</li>		
+
+            <? endforeach; ?>
+            
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -29,3 +58,6 @@
         </div><!--/.navbar-collapse -->
       </div>
     </div>
+    	<pre class="container">
+    		<?echo json_encode($pages);?>
+    	</pre>

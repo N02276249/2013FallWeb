@@ -1,3 +1,7 @@
+<?
+	$location = 'c';
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,7 +16,7 @@
   <body>
 
 
-    <?php include ("nav.php"); ?>
+    <?php include ("_nav.php"); ?>
     
     <div class="container">
       <div class="well">
@@ -49,10 +53,11 @@
 
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="Scripts/main.js"></script>
     <script type="text/javascript"> 
     	$(function(){
-    		$(".contact").addClass("active");
-    	})    
+    		$(".nav .contact").addClass("active").fadeOut().fadeIn();
+    	});
     </script>	
   </body>
 </html>
