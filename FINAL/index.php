@@ -2,7 +2,7 @@
 
 <?
 	$conn = GetConnection();
-	$result = $conn->query('SELECT * FROM 2013Fall_Users');
+	$result = $conn->query('SELECT * FROM 2013Fall_Keywords');
 	$rs = $result->fetch_assoc();
 ?>
 
