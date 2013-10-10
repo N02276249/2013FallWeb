@@ -2,7 +2,7 @@
 	
 	include_once '../../inc/_global.php';
 	
-	$model = Keywords::Get();
+	$model = Users::Get();
 	$view = 'list.php';
 	
 	include '../Shared/_layout.php';
