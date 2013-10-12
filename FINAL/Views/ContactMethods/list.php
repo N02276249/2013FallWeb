@@ -2,20 +2,22 @@
 
 <div class="container">
 	
-	<h2> Keywords </h2>
+	<h2> Contact Methods </h2>
 
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>Name</th>
+				<th>User</th>
+				<th>Value</th>
+				<th>Contact Type</th>
 			</tr>
 		</thead>
 		<tbody>
 			<? foreach ($model as $value): ?>
 				<tr>
-					<td><?=$value['id']?></td> 
-					<td><?=$value['Name']?></td>				
+					<td><?=$value['2013NewFall_Users_id']?></td> 
+					<td><?=$value['Value']?></td>
+					<td><?=$value['ContactMethodType']?></td>				
 				</tr>
 			<? endforeach; ?>
 		</tbody>

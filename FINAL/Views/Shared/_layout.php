@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Playground</a>
+          <a class="navbar-brand" href="#">Final</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -33,6 +33,12 @@
         		<li class="Users">
             		<a href="../Users/"> Users </a>
         		</li>	            
+        		<li class="ContactMethods">
+            		<a href="../ContactMethods/"> Contact Methods </a>
+        		</li>	
+        		<li class="Addresses">
+            		<a href="../Addresses/"> Addresses </a>
+        		</li>	        		                    		
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
               <ul class="dropdown-menu">

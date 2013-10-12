@@ -2,20 +2,28 @@
 
 <div class="container">
 	
-	<h2> Keywords </h2>
+	<h2> Addresses </h2>
 
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>Name</th>
+				<th>User</th>
+				<th>Type</th>
+				<th>Street</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Zip</th>
 			</tr>
 		</thead>
 		<tbody>
 			<? foreach ($model as $value): ?>
 				<tr>
-					<td><?=$value['id']?></td> 
-					<td><?=$value['Name']?></td>				
+					<td><?=$value['2013NewFall_Users_id']?></td> 
+					<td><?=$value['AddressTypes']?></td>
+					<td><?=$value['Street1']?> <?=$value['Street2']?></td>
+					<td><?=$value['City']?></td>
+					<td><?=$value['State']?></td>
+					<td><?=$value['Zip']?></td>
 				</tr>
 			<? endforeach; ?>
 		</tbody>
