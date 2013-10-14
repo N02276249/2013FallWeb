@@ -38,6 +38,15 @@
                 <li><a href="../Payments/">Payments</a></li>
               </ul>
             </li>
+            
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Product Info<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              	<li><a href="../Orders/">Orders</a></li>
+                <li><a href="../Products/">Products</a></li>
+                <li><a href="../Manufacturers/">Manufacturers</a></li>
+                <li><a href="../Opinion/">Opinions</a></li>
+              </ul>
           </ul>
           <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Nicholas Marion</a></p>
         </div>
