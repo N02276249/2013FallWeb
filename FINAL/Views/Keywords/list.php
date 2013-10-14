@@ -23,7 +23,7 @@
 </div>
 <? function Scripts()
 { ?>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"</script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
 		$(".table").dataTable();
 	</script>

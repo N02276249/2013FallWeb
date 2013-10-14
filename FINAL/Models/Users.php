@@ -9,7 +9,7 @@ class Users
 	{
 		$ret = array();
 		$conn = GetConnection();
-		$result = $conn->query('SELECT * FROM 2013NewFall_Users');
+		$result = $conn->query('SELECT * From 2013NewFall_Users U left join 2013NewFall_Keywords K on U.UserType = K.id');
 		
 		while ($rs = $result->fetch_assoc())
 		{

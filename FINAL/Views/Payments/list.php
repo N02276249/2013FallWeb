@@ -2,26 +2,26 @@
 
 <div class="container">
 	
-	<h2> Users </h2>
+	<h2> Payments </h2>
 
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
+				<th>Name</th>
 				<th>Type</th>
-				<th></th>
+				<th>Number</th>
+				<th>Expiration</th>
+				<th>Address</th>
 			</tr>
 		</thead>
 		<tbody>
 			<? foreach ($model as $value): ?>
 				<tr>
-					<td><?=$value['First Name']?></td> 
-					<td><?=$value['Last Name']?></td>
+					<td><?=$value['First Name']?> <?=$value['Last Name']?></td> 
 					<td><?=$value['Name']?></td>
-					<td>
-						
-					</td>				
+					<td><?=$value['Number']?></td>
+					<td><?=$value['Expiration']?></td>
+					<td><?=$value['Street1']?> <?=$value['Street2']?>, <?=$value['State']?>, <?=$value['Zip']?></td>
 				</tr>
 			<? endforeach; ?>
 		</tbody>

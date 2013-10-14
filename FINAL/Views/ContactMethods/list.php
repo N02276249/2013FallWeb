@@ -15,9 +15,9 @@
 		<tbody>
 			<? foreach ($model as $value): ?>
 				<tr>
-					<td><?=$value['2013NewFall_Users_id']?></td> 
+					<td><?=$value['First Name']?> <?=$value['Last Name']?></td> 
 					<td><?=$value['Value']?></td>
-					<td><?=$value['ContactMethodType']?></td>				
+					<td><?=$value['Name']?></td>				
 				</tr>
 			<? endforeach; ?>
 		</tbody>
@@ -25,7 +25,7 @@
 </div>
 <? function Scripts()
 { ?>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"</script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
 		$(".table").dataTable();
 	</script>

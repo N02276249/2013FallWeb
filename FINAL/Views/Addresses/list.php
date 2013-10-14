@@ -18,8 +18,8 @@
 		<tbody>
 			<? foreach ($model as $value): ?>
 				<tr>
-					<td><?=$value['2013NewFall_Users_id']?></td> 
-					<td><?=$value['AddressTypes']?></td>
+					<td><?=$value['First Name']?> <?=$value['Last Name']?></td> 
+					<td><?=$value['Name']?></td>
 					<td><?=$value['Street1']?> <?=$value['Street2']?></td>
 					<td><?=$value['City']?></td>
 					<td><?=$value['State']?></td>
@@ -31,7 +31,7 @@
 </div>
 <? function Scripts()
 { ?>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"</script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
 		$(".table").dataTable();
 	</script>
