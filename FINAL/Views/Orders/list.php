@@ -22,7 +22,7 @@
 					<td><?=$value['OrderDate']?></td> 
 					<td><?=$value['First Name']?> <?=$value['Last Name']?></td> 
 					<td><?=$value['Street1']?> <?=$value['Street2']?>, <?=$value['State']?>, <?=$value['Zip']?></td>
-					<td><?=$value['Number']?> EXP: <?=$value['Expiration']?></td>
+					<td>XXXX-XXXX-XXXX-<?=substr($value['Number'], -4);?> EXP: <?=$value['Expiration']?></td>
 					<td><?=$value['ManufactureName']?> <?=$value['Model']?></td>
 					<td><?=$value['Price']?></td>
 					<td><?=$value['OpinionValue']?></td>

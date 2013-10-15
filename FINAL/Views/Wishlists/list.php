@@ -2,35 +2,22 @@
 
 <div class="container">
 	
-	<h2> Products </h2>
+	<h2> Wishlists </h2>
 
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>Manufacturer</th>
-				<th>Model</th>
-				<th>Description</th>
-				<th>Price</th>
-				<th>Product Type</th>
-				<th>Available</th>
+				<th>Name</th>
+				<th>Product</th>
+				<th>Comments</th>
 			</tr>
 		</thead>
 		<tbody>
 			<? foreach ($model as $value): ?>
-				<tr>
-					<td><?=$value['ManufactureName']?></td> 
-					<td><?=$value['Model']?></td>
-					<td><?=$value['Description']?></td>
-					<td><?=$value['Price']?></td>
-					<td><?=$value['Name']?></td>
-					<td><? if($value['InStock']>=1)
-							{?>
-								Yes
-							<?}
-							else if($value['InStock']==0)
-							{?>
-								No
-							<?}?></td>
+				<tr> 
+					<td><?=$value['First Name']?> <?=$value['Last Name']?></td>
+					<td><?=$value['ManufactureName']?> <?=$value['Model']?></td>
+					<td><?=$value['WishlistValue']?></td>
 				</tr>
 			<? endforeach; ?>
 		</tbody>

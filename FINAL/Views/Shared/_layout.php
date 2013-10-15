@@ -36,6 +36,7 @@
                 <li><a href="../ContactMethods/">Contact Methods</a></li>
                 <li><a href="../Addresses/">Addresses</a></li>
                 <li><a href="../Payments/">Payments</a></li>
+                <li><a href="../Wishlists/">Wishlists</a></li>
               </ul>
             </li>
             

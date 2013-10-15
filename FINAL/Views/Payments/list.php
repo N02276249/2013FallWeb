@@ -19,7 +19,7 @@
 				<tr>
 					<td><?=$value['First Name']?> <?=$value['Last Name']?></td> 
 					<td><?=$value['Name']?></td>
-					<td><?=$value['Number']?></td>
+					<td>XXXX-XXXX-XXXX-<?=substr($value['Number'], -4);?></td>
 					<td><?=$value['Expiration']?></td>
 					<td><?=$value['Street1']?> <?=$value['Street2']?>, <?=$value['State']?>, <?=$value['Zip']?></td>
 				</tr>
