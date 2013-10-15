@@ -20,7 +20,7 @@
 					<td><?=$value['First Name']?> <?=$value['Last Name']?></td> 
 					<td><?=$value['Name']?></td>
 					<td>XXXX-XXXX-XXXX-<?=substr($value['Number'], -4);?></td>
-					<td><?=$value['Expiration']?></td>
+					<td><?=substr($value['Expiration'], 0, -3)?></td>
 					<td><?=$value['Street1']?> <?=$value['Street2']?>, <?=$value['State']?>, <?=$value['Zip']?></td>
 				</tr>
 			<? endforeach; ?>

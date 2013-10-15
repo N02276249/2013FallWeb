@@ -9,7 +9,7 @@
 			<tr>
 				<th>Name</th>
 				<th>Product</th>
-				<th>Order Date</th>
+				<th>Order Number</th>
 				<th>Feedback</th>
 			</tr>
 		</thead>
@@ -18,7 +18,7 @@
 				<tr>
 					<td><?=$value['First Name']?> <?=$value['Last Name']?></td> 
 					<td><?=$value['ManufactureName']?> <?=$value['Model']?></td>
-					<td><?=$value['OrderDate']?></td>
+					<td><?=$value['OrderNumber']?></td>
 					<td><?=$value['OpinionValue']?></td>
 			<? endforeach; ?>
 		</tbody>

@@ -7,7 +7,7 @@
 	<table class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>Order Date</th>
+				<th>Order Number</th>
 				<th>Name</th>
 				<th>Shipping Address</th>
 				<th>Payment</th>
@@ -19,10 +19,10 @@
 		<tbody>
 			<? foreach ($model as $value): ?>
 				<tr>
-					<td><?=$value['OrderDate']?></td> 
+					<td><?=$value['OrderNumber']?></td> 
 					<td><?=$value['First Name']?> <?=$value['Last Name']?></td> 
 					<td><?=$value['Street1']?> <?=$value['Street2']?>, <?=$value['State']?>, <?=$value['Zip']?></td>
-					<td>XXXX-XXXX-XXXX-<?=substr($value['Number'], -4);?> EXP: <?=$value['Expiration']?></td>
+					<td>XXXX-XXXX-XXXX-<?=substr($value['Number'], -4);?> EXP: <?=substr($value['Expiration'], 0, -3);?></td>
 					<td><?=$value['ManufactureName']?> <?=$value['Model']?></td>
 					<td><?=$value['Price']?></td>
 					<td><?=$value['OpinionValue']?></td>
