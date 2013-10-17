@@ -7,16 +7,6 @@ class Products
 {
 	static public function Get()
 	{
-		$ret = array();
-		$conn = GetConnection();
-		$result = $conn->query('Select * From 2013NewFall_Products P left join 2013NewFall_Keywords K on P.ProductType = K.id left join 2013NewFall_Manufactures M on P.Manufacture_id = M.id');
-		
-		while ($rs = $result->fetch_assoc())
-		{
-			$ret[] = $rs;
-		}
-		
-		$conn->close();		
-		return $ret;
+		return fetch_all('Select * From 2013NewFall_Products P left join 2013NewFall_Keywords K on P.ProductType = K.id left join 2013NewFall_Manufactures M on P.Manufacture_id = M.id');
 	}
 }

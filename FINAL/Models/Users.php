@@ -5,18 +5,16 @@
  */
 class Users
 {
-	static public function Get()
+	static public function Get($id=null)
 	{
-		$ret = array();
-		$conn = GetConnection();
-		$result = $conn->query('SELECT * From 2013NewFall_Users U left join 2013NewFall_Keywords K on U.UserType = K.id');
-		
-		while ($rs = $result->fetch_assoc())
+		if (isset($id))
 		{
-			$ret[] = $rs;
+			return fetch_one("SELECT * From 2013NewFall_Users U left join 2013NewFall_Keywords K on U.UserType = K.id WHERE id=$id");
 		}
 		
-		$conn->close();		
-		return $ret;
+		else
+		{
+			return fetch_all('SELECT * From 2013NewFall_Users U left join 2013NewFall_Keywords K on U.UserType = K.id');
+		}
 	}
 }

@@ -18,3 +18,26 @@ function GetConnection()
 	$conn = new mysqli('localhost', 'n02276249', $sql_password, 'n02276249_db');	
 	return $conn;
 }
+
+function fetch_all($sql)
+{
+	$ret = array();
+	$conn = GetConnection();
+	$result = $conn->query($sql);
+	
+	while ($rs = $result->fetch_assoc())
+	{
+		$ret[] = $rs;
+	}
+	
+	$conn->close();		
+	return $ret;
+}
+
+function fetch_one($sql)
+{
+	$arr = fetch_all($sql);
+	return $arr[0];
+}
+
+?>

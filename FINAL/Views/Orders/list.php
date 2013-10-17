@@ -20,7 +20,7 @@
 			<? foreach ($model as $value): ?>
 				<tr>
 					<td><?=$value['OrderNumber']?></td> 
-					<td><?=$value['First Name']?> <?=$value['Last Name']?></td> 
+					<td><?=$value['Last Name']?>, <?=$value['First Name']?></td> 
 					<td><?=$value['Street1']?> <?=$value['Street2']?>, <?=$value['State']?>, <?=$value['Zip']?></td>
 					<td>XXXX-XXXX-XXXX-<?=substr($value['Number'], -4);?> EXP: <?=substr($value['Expiration'], 0, -3);?></td>
 					<td><?=$value['ManufactureName']?> <?=$value['Model']?></td>
