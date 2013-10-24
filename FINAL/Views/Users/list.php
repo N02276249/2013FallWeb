@@ -18,13 +18,13 @@
 		<tbody>
 			<? foreach ($model as $value): ?>
 				<tr>
-					<td><?=$value['First Name']?></td> 
-					<td><?=$value['Last Name']?></td>
+					<td><?=$value['FirstName']?></td> 
+					<td><?=$value['LastName']?></td>
 					<td><?=$value['Name']?></td>
 					<td>
-						<a class="glyphicon glyphicon-file" href="?action=details&id=<?=$rs['id']?>"></a>
-						<a class="glyphicon glyphicon-pencil" href="?action=details&id=<?=$rs['id']?>"></a>
-						<a class="glyphicon glyphicon-trash" href="?action=details&id=<?=$rs['id']?>"></a>												
+						<a class="glyphicon glyphicon-file" href="?action=details&id=<?=$value['U_id']?>"></a>
+						<a class="glyphicon glyphicon-pencil" href="?action=details&id=<?=$value['U_id']?>"></a>
+						<a class="glyphicon glyphicon-trash" href="?action=details&id=<?=$value['U_id']?>"></a>												
 					</td>				
 				</tr>
 			<? endforeach; ?>

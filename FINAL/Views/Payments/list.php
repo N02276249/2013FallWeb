@@ -17,7 +17,7 @@
 		<tbody>
 			<? foreach ($model as $value): ?>
 				<tr>
-					<td><?=$value['Last Name']?>, <?=$value['First Name']?></td> 
+					<td><?=$value['LastName']?>, <?=$value['FirstName']?></td> 
 					<td><?=$value['Name']?></td>
 					<td>XXXX-XXXX-XXXX-<?=substr($value['Number'], -4);?></td>
 					<td><?=substr($value['Expiration'], 0, -3)?></td>

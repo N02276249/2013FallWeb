@@ -18,7 +18,7 @@
 		<tbody>
 			<? foreach ($model as $value): ?>
 				<tr>
-					<td><?=$value['Last Name']?>, <?=$value['First Name']?></td> 
+					<td><?=$value['LastName']?>, <?=$value['FirstName']?></td> 
 					<td><?=$value['Name']?></td>
 					<td><?=$value['Street1']?> <?=$value['Street2']?></td>
 					<td><?=$value['City']?></td>
