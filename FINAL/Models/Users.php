@@ -38,4 +38,27 @@ class Users
 			return false;
 		}
 	}
+	
+	static public function Blank()
+	{
+		return array('FirstName' => null, 'LastName' => null, 'Password' => null, 'UserType' => null);
+	}
+	
+	static public function Validate($row)
+	{
+		$errors = array();
+		if (!$row['FirstName']) $errors['FirstName'] = 'is required';
+		if (!$row['LastName']) $errors['LastName'] = 'is required';
+		if (!$row['UserType']) $errors['UserType'] = 'is required';
+		
+		if(count($errors) == 0)
+		{
+			return false;
+		}				
+		
+		else
+		{
+			return $errors;
+		}
+	}
 }

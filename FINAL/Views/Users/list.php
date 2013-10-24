@@ -23,8 +23,8 @@
 					<td><?=$value['Name']?></td>
 					<td>
 						<a class="glyphicon glyphicon-file" href="?action=details&id=<?=$value['U_id']?>"></a>
-						<a class="glyphicon glyphicon-pencil" href="?action=details&id=<?=$value['U_id']?>"></a>
-						<a class="glyphicon glyphicon-trash" href="?action=details&id=<?=$value['U_id']?>"></a>												
+						<a class="glyphicon glyphicon-pencil" href="?action=edit&id=<?=$value['U_id']?>"></a>
+						<a class="glyphicon glyphicon-trash" href="?action=delete&id=<?=$value['U_id']?>"></a>												
 					</td>				
 				</tr>
 			<? endforeach; ?>

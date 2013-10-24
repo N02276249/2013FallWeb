@@ -12,32 +12,35 @@ switch ($action)
 		break;
 		
 	case 'new':	
-		$view = 'new.php';
+		$model = Users::Blank();
+		$view = 'edit.php';
 		break;
 		
 	case 'save':
-		$errors = Users::Save($_REQUEST);
-		if($errors)
+		$errors = Users::Validate($_REQUEST);
+		if(!$errors)
 		{
-			$model = $_REQUEST;
-			$view = 'new.php';
+			$errors = Users::Save($_REQUEST);
 		}
-		
-		else
+
+		if(!$errors)
 		{
 			header("Location: ?");
 			die();		
 		}
+		
+		$model = $_REQUEST;
+		$view = 'edit.php';
 		break;				
 		
 	case 'edit':	
 		$model = Users::Get($_REQUEST['id']);
-		$view = 'details.php';
+		$view = 'edit.php';
 		break;
 		
 	case 'delete':	
 		$model = Users::Get($_REQUEST['id']);
-		$view = 'details.php';
+		$view = 'delete.php';
 		break;
 					
 		

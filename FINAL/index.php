@@ -18,6 +18,7 @@
   <body>
     <h1>This is the Final Project.</h1>
     <h2>It will be an E-Commerce website.</h2>
+    <a href="Views/">Views</a>
     
     <?
     
