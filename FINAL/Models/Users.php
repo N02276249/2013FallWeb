@@ -21,9 +21,21 @@ class Users
 	
 	static public function Save($row)
 	{
-		$sql = 	" Insert Into 2013NewFall_Users (`FirstName`, `LastName`, Password, UserType) "
-			.	" Values ('$row[FirstName]', '$row[LastName]', '$row[Password]', '$row[UserType]') ";
-		$conn = GetConnection();
+		#$conn = GetConnection();		
+		#$row2 = Users::Encode($row, $conn)
+		if ($row['id'])
+		{
+			$sql =  " UPDATE 2013NewFall_Users "
+				.	" Set FirstName = '$row2[FirstName]', LastName = '$row2[LastName]', Password = '$row2[Password]', UserType = '$row2[UserType]' "
+				.	" WHERE id = '$row2[id]' ";
+		}
+	
+		else 
+		{
+			$sql = 	" Insert Into 2013NewFall_Users (`FirstName`, `LastName`, Password, UserType) "
+				.	" Values ('$row2[FirstName]', '$row2[LastName]', '$row2[Password]', '$row2[UserType]') ";
+		}
+
 		$conn->query($sql);
 		$error = $conn->error;
 		$conn->close();
@@ -41,7 +53,7 @@ class Users
 	
 	static public function Blank()
 	{
-		return array('FirstName' => null, 'LastName' => null, 'Password' => null, 'UserType' => null);
+		return array('id' => null, 'FirstName' => null, 'LastName' => null, 'Password' => null, 'UserType' => null);
 	}
 	
 	static public function Validate($row)
@@ -61,5 +73,15 @@ class Users
 		{
 			return $errors;
 		}
+	}
+	
+	static function Encode($row, $conn)
+	{
+		$row2 = array();
+		foreach ($row as $key => $value)
+		{
+			$row2[$key] = conn->real_escape_string($value);
+		}
+		return $row2;
 	}
 }
