@@ -21,13 +21,13 @@ class Users
 	
 	static public function Save($row)
 	{
-		#$conn = GetConnection();		
-		#$row2 = Users::Encode($row, $conn)
+		$conn = GetConnection();		
+		$row2 = Users::Encode($row, $conn);
 		if ($row['id'])
 		{
 			$sql =  " UPDATE 2013NewFall_Users "
 				.	" Set FirstName = '$row2[FirstName]', LastName = '$row2[LastName]', Password = '$row2[Password]', UserType = '$row2[UserType]' "
-				.	" WHERE id = '$row2[id]' ";
+				.	" WHERE id = $row2[id] ";
 		}
 	
 		else 
@@ -80,7 +80,7 @@ class Users
 		$row2 = array();
 		foreach ($row as $key => $value)
 		{
-			$row2[$key] = conn->real_escape_string($value);
+			$row2[$key] = $conn->real_escape_string($value);
 		}
 		return $row2;
 	}
