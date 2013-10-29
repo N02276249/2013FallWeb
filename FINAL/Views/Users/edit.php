@@ -13,7 +13,6 @@
 			<? endforeach; ?>
 		</ul>
 	<? endif; ?>
-	
 	<form action="?action=save" method="post" class="form-horizontal row">
 		
 		<input type="hidden" name="id" value="<?=$model['id']?>" />
@@ -45,10 +44,20 @@
 		<div class="form-group <?= isset($errors['UserType']) ? 'has-error' : '' ?>">
 			<label for="UserType" class="col-sm-2 control-label">User Type</label>
 			<div class="col-sm-10">
-				<input type="UserType" name="UserType" id="UserType" placeholder="User Type" class="form-control" value="<?=$model['UserType']?>" />
-				<? if(isset($errors['UserType'])): ?><span class ="error"><?=$errors['UserType'] ?></span><? endif;?>								
+				<div class="col-sm-10">
+					<label class="radio-inline">
+						<input type="radio" name="UserType" id="UserType" value="6" <? if($model['UserType'] == '6') { echo 'checked="checked"'; }?>> Admin
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="UserType" id="UserType" value="7" <? if($model['UserType'] == '7') { echo 'checked="checked"'; }?>> Employee
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="UserType" id="UserType" value="8" <? if($model['UserType'] == '8') { echo 'checked="checked"'; }?>> Customer
+					</label>
+					<? if(isset($errors['UserType'])): ?><span class ="error"><?=$errors['UserType'] ?></span><? endif;?>	
+				</div>
 			</div>
-		</div>							
+		</div>						
 			
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-lg-10">

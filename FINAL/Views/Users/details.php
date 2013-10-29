@@ -10,5 +10,6 @@
 		<dd><?=$model['Password']?></dd>	
 		<dt>UserType</dt>
 		<dd><?=$model['UserType']?></dd>
+		<input action="action" type="submit" class="btn btn-primary btn-xs" value="Back" onclick="history.go(-1);" />
 	</dl>
 </div>
