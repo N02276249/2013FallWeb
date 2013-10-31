@@ -22,9 +22,9 @@
 					<td><?=$value['LastName']?></td>
 					<td><?=$value['Name']?></td>
 					<td>
-						<a class="glyphicon glyphicon-file" href="?action=details&id=<?=$value['U_id']?>"> <!-- data-toggle="modal" data-target="#myModal" --></a>
-						<a class="glyphicon glyphicon-pencil" href="?action=edit&id=<?=$value['U_id']?>"></a>
-						<a class="glyphicon glyphicon-trash" href="?action=delete&id=<?=$value['U_id']?>"></a>												
+						<a class="glyphicon glyphicon-file" href="?action=details&id=<?=$value['U_id']?>&format=dialog" data-toggle="modal" data-target="#myModal"></a>
+						<a class="glyphicon glyphicon-pencil" href="?action=edit&id=<?=$value['U_id']?>&format=dialog"  data-toggle="modal" data-target="#myModal"</a>
+						<a class="glyphicon glyphicon-trash" href="?action=delete&id=<?=$value['U_id']?>&format=dialog"  data-toggle="modal" data-target="#myModal"></a>												
 					</td>				
 				</tr>
 			<? endforeach; ?>
@@ -32,7 +32,7 @@
 	</table>
 </div>
 
-<!-- <div id="myModal"></div> -->
+<div id="myModal" class="modal fade"></div>
 
 <? function Scripts()
 { ?>

@@ -75,6 +75,26 @@ class Users
 		}
 	}
 	
+	static public function Delete($id)
+	{
+		$conn = GetConnection();
+		$sql = " DELETE from 2013Fall_Users WHERE id=$id ";
+		
+		$conn->query($sql);
+		$error = $conn->error;
+		$conn->close();
+		
+		if($error)
+		{
+			return array('db_error' => $error);
+		}
+		
+		else 
+		{
+			return false;
+		}
+	}
+	
 	static function Encode($row, $conn)
 	{
 		$row2 = array();

@@ -3,6 +3,8 @@
 <div class="container">
 	
 	<h2> Addresses </h2>
+	
+	<a href="?action=new">Add Address</a>	
 
 	<table class="table table-striped table-bordered">
 		<thead>
@@ -13,6 +15,7 @@
 				<th>City</th>
 				<th>State</th>
 				<th>Zip</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,6 +27,11 @@
 					<td><?=$value['City']?></td>
 					<td><?=$value['State']?></td>
 					<td><?=$value['Zip']?></td>
+					<td>
+						<a class="glyphicon glyphicon-file" href="?action=details&id=<?=$value['A_id']?>"></a>
+						<a class="glyphicon glyphicon-pencil" href="?action=edit&id=<?=$value['A_id']?>"></a>
+						<a class="glyphicon glyphicon-trash" href="?action=delete&id=<?=$value['A_id']?>"></a>	
+					</td>
 				</tr>
 			<? endforeach; ?>
 		</tbody>
