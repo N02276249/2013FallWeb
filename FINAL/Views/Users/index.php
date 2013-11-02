@@ -52,11 +52,10 @@ switch ($action)
 				header("Location: ?");
 				die();
 			}
-			
+		}
 			$model	= Users::Get($_REQUEST['id']);
 			$view	= 'delete.php';	
 			$title	= "Edit: $model[FirstName] $model[LastName]";			
-		}
 		break;
 					
 		

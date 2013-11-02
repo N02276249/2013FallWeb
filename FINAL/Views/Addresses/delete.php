@@ -1,4 +1,4 @@
-<h3>Are you sure you want to delete <?=$model['FirstName']?> <?=$model['LastName']?></h3>
+<h3>Are you sure you want to delete <?=$model['Street1']?> <?=$model['Street2']?></h3>
 	
 <form action="?action=delete" method="post">
 	<input type="hidden" name="id" value="<?=$model['id']?>" />

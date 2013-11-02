@@ -28,15 +28,18 @@
 					<td><?=$value['State']?></td>
 					<td><?=$value['Zip']?></td>
 					<td>
-						<a class="glyphicon glyphicon-file" href="?action=details&id=<?=$value['A_id']?>"></a>
-						<a class="glyphicon glyphicon-pencil" href="?action=edit&id=<?=$value['A_id']?>"></a>
-						<a class="glyphicon glyphicon-trash" href="?action=delete&id=<?=$value['A_id']?>"></a>	
+						<a class="glyphicon glyphicon-file" href="?action=details&id=<?=$value['A_id']?>&format=dialog" data-toggle="modal" data-target="#myModal"></a>
+						<a class="glyphicon glyphicon-pencil" href="?action=edit&id=<?=$value['A_id']?>&format=dialog"  data-toggle="modal" data-target="#myModal"</a>
+						<a class="glyphicon glyphicon-trash" href="?action=delete&id=<?=$value['A_id']?>&format=dialog"  data-toggle="modal" data-target="#myModal"></a>												
 					</td>
 				</tr>
 			<? endforeach; ?>
 		</tbody>
 	</table>
 </div>
+
+<div id="myModal" class="modal fade"></div>
+
 <? function Scripts()
 { ?>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>

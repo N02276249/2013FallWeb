@@ -78,7 +78,7 @@ class Users
 	static public function Delete($id)
 	{
 		$conn = GetConnection();
-		$sql = " DELETE from 2013Fall_Users WHERE id=$id ";
+		$sql = " DELETE from 2013NewFall_Users WHERE id=$id ";
 		
 		$conn->query($sql);
 		$error = $conn->error;
