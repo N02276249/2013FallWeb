@@ -45,7 +45,7 @@
               <ul class="dropdown-menu">
               	<li><a href="../Orders/">Orders</a></li>
                 <li><a href="../Products/">Products</a></li>
-                <li><a href="../Manufacturers/">Manufacturers</a></li>
+                <li><a href="../Manufactures/">Manufactures</a></li>
                 <li><a href="../Opinion/">Opinions</a></li>
               </ul>
           </ul>
