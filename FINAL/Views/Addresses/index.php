@@ -34,7 +34,7 @@ switch ($action)
 		
 		$model	= $_REQUEST;
 		$view	= 'edit.php';
-		$titl	= "Edit: $model[Street1] $model[Street2]";
+		$title	= "Edit: $model[Street1] $model[Street2]";
 		break;				
 		
 	case 'edit':	

@@ -11,8 +11,9 @@ class ContactMethods
 		{	
 			return fetch_one("SELECT *,  2013NewFall_Users_id AS Users_id FROM 2013NewFall_ContactMethods WHERE id='$id'");
 		}
+		else
 		{
-			return fetch_all('Select * From 2013NewFall_ContactMethods C left join 2013NewFall_Keywords K on C.ContactMethodType = K.id left join 2013NewFall_ContactMethods U on C.2013NewFall_ContactMethods_id = U.id');
+			return fetch_all('Select *, C.id AS C_id, U.id AS U_id, K.id AS K_id From 2013NewFall_ContactMethods C left join 2013NewFall_Keywords K on C.ContactMethodType = K.id left join 2013NewFall_Users U on C.2013NewFall_Users_id = U.id');
 		}
 	}
 		
@@ -30,10 +31,9 @@ class ContactMethods
 	
 		else 
 		{
-			$sql = 	" Insert Into 2013NewFall_ContactMethods (`Value`, `ContactMethodType`, '2013NewFall_Users_id) "
+			$sql = 	" Insert Into 2013NewFall_ContactMethods (Value, ContactMethodType, 2013NewFall_Users_id) "
 				.	" Values ('$row2[Value]', '$row2[ContactMethodType]', '$row2[Users_id]') ";
 		}
-
 		$conn->query($sql);
 		$error = $conn->error;
 		$conn->close();
@@ -51,14 +51,14 @@ class ContactMethods
 	
 	static public function Blank()
 	{
-		return array('id' => null, 'Value' => null, 'ContactMethodType' => null, 'Users_id');
+		return array('id' => null, 'Value' => null, 'ContactMethodType' => null, 'Users_id' => null);
 	}
 	
 	static public function Validate($row)
 	{
 		$errors = array();
 		if (!$row['Value']) $errors['Value'] = ' is required';
-		if (!$row['ContactMethodType']) $errors['ContactMethodType'] = ' is required';
+		if (!isset($row['ContactMethodType'])) $errors['ContactMethodType'] = ' is required';
 		if (!$row['Users_id'])	$errors['Users_id'] = ' is required';
 		else if (!is_numeric($row['Users_id']))	$errors['Users_id'] = ' must be a number';
 		
