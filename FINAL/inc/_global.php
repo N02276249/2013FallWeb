@@ -26,6 +26,7 @@ function fetch_all($sql)
 	$result = $conn->query($sql);
 	
 	echo $conn->error;
+	print_r($sql);
 	
 	while ($rs = $result->fetch_assoc())
 	{

@@ -16,7 +16,12 @@ class Addresses {
 			return fetch_all('SELECT FirstName, LastName, Street1, Street2, City, State, Zip, AddressTypes, Name, A.id AS A_id, U.id AS U_id, K.id AS K_id, 2013NewFall_Users_id From 2013NewFall_Addresses A left join 2013NewFall_Keywords K on A.AddressTypes = K.id left join 2013NewFall_Users U on A.2013NewFall_Users_id = U.id');
 		}
 	}
-
+	
+	static public function GetSelectListFor($id)
+	{
+		return fetch_all("Select id, Street1, Street2, City, State, Zip FROM 2013NewFall_Addresses");
+	}
+	
 	static public function Save($row) 
 	{
 		$conn = GetConnection();

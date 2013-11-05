@@ -9,7 +9,8 @@ class Orders
 	{
 		if (isset($id))
 		{
-			$sql = "	SELECT *, O.id AS O_id, U.id AS U_id, P.id AS P_id, A.id AS A_id, OD.id AS OD_id, PR.id AS PR_id, M.id AS M_id, OP.id AS OP_id, O.2013NewFall_Users_id AS Users_id FROM 2013NewFall_Orders O 
+			$sql = "	SELECT *, O.id AS O_id, U.id AS U_id, P.id AS P_id, A.id AS A_id, OD.id AS OD_id, PR.id AS PR_id, M.id AS M_id, OP.id AS OP_id, O.2013NewFall_Users_id AS Users_id 
+						FROM 2013NewFall_Orders O 
 							JOIN 2013NewFall_Users U ON O.2013NewFall_Users_id = U.id
 							JOIN 2013NewFall_Payments P ON O.Payments_id = P.id
 							JOIN 2013NewFall_Addresses A ON O.Address_id = A.id
@@ -17,7 +18,7 @@ class Orders
 							JOIN 2013NewFall_Products PR ON OD.Products_id = PR.id
 							JOIN 2013NewFall_Manufactures M ON PR.Manufacture_id = M.id
 							JOIN 2013NewFall_Opinion OP ON O.id = OP.Orders_id
-							WHERE O.id='$id'
+						WHERE O.id='$id'
 					";
 			return fetch_one($sql);
 		}

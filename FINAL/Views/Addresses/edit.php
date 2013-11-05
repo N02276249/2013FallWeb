@@ -44,7 +44,7 @@
 		<div class="form-group <?= isset($errors['State']) ? 'has-error' : '' ?>">
 			<label for="State" class="col-sm-2 control-label">State</label>
 			<div class="col-sm-10">
-				<input type="text" name="State" id="City" placeholder="State" class="form-control" value="<?=$model['State']?>" />		
+				<input type="text" name="State" id="State" placeholder="State" class="form-control" value="<?=$model['State']?>" />		
 				<? if(isset($errors['State'])): ?><span class ="error"><?=$errors['State'] ?></span><? endif;?>					
 			</div>
 		</div>
