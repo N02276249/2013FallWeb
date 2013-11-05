@@ -1,8 +1,22 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet">
 
+<style>
+	tr.success, tr.success td
+	{
+		background-color: #00AA00;	
+	}
+</style>
+
 <div class="container">
 	
 	<h2> Users </h2>
+
+	<? if(isset($_REQUEST['status']) && $_REQUEST['status'] == 'Saved'): ?>
+		<div class="alert alert-success">
+			<button type="button" class="close" aria-hidden="true">&times;</button>
+			<b>Success!</b> Your User has been saved.
+		</div>	
+	<? endif; ?>
 	
 	<a href="?action=new">Add Contact</a>
 
@@ -17,7 +31,7 @@
 		</thead>
 		<tbody>
 			<? foreach ($model as $value): ?>
-				<tr>
+				<tr class="<?=$value['U_id']==$_REQUEST['id'] ? 'success' : '' ?> ">
 					<td><?=$value['FirstName']?></td> 
 					<td><?=$value['LastName']?></td>
 					<td><?=$value['Name']?></td>
@@ -38,7 +52,14 @@
 { ?>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
-		$(".table").dataTable();
+		$(function()
+		{
+			$(".table").dataTable();
+			$(".alert .close").click(function()
+			{
+				$(this).closest(".alert").slideUp();
+			});
+		})
 	</script>
 	
 <? } ?>

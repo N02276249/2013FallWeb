@@ -19,6 +19,11 @@ class Keywords
 		
 	}		
 	
+	static public function GetSelectListFor($id)
+	{
+		return fetch_all("Select id, Name, Parent_id FROM 2013NewFall_Keywords WHERE Parent_id = $id ");
+	}
+	
 	static public function Save($row)
 	{
 		$conn = GetConnection();		

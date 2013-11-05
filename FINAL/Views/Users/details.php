@@ -9,6 +9,6 @@
 		<dt>Password</dt>
 		<dd><?=$model['Password']?></dd>	
 		<dt>UserType</dt>
-		<dd><?=$model['UserType']?></dd>
+		<dd><?=$model['Name']?></dd>
 	</dl>
 </div>

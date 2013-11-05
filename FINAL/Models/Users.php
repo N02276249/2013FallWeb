@@ -9,12 +9,21 @@ class Users
 	{
 		if (isset($id))
 		{
-			return fetch_one("SELECT * FROM 2013NewFall_Users WHERE id='$id'");
+			$sql = "	SELECT U.*, K.Name, U.id AS U_id, K.id AS K_id
+						FROM 2013NewFall_Users U
+							JOIN 2013NewFall_Keywords K ON U.UserType = K.id
+						WHERE U.id=$id
+					";
+			return fetch_one($sql);
 		}
 		
 		else
 		{
-			return fetch_all('SELECT FirstName, LastName, UserType, K.Name, U.id AS U_id, K.id AS K_id From 2013NewFall_Users U left join 2013NewFall_Keywords K on U.UserType = K.id;');
+			$sql = 		'SELECT FirstName, LastName, UserType, K.Name, U.id AS U_id, K.id AS K_id 
+						FROM 2013NewFall_Users U 
+							JOIN 2013NewFall_Keywords K on U.UserType = K.id
+						';
+			return fetch_all($sql);
 		}
 	}
 	
