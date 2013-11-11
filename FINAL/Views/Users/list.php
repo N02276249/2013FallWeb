@@ -1,9 +1,9 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet">
 
 <style>
-	tr.success, tr.success td
+	.table tr.success2, .table tr.success td
 	{
-		background-color: #00AA00;	
+		background-color: #00AA00 !important;	
 	}
 </style>
 
@@ -58,6 +58,10 @@
 			$(".alert .close").click(function()
 			{
 				$(this).closest(".alert").slideUp();
+			});
+			$(".table tr").click(function()
+			{
+				$(this).toggleClass("success2");
 			});
 		})
 	</script>
