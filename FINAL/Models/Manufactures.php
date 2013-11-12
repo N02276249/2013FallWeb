@@ -19,6 +19,11 @@ class Manufactures
 		
 	}		
 	
+	static public function GetSelectList()
+	{
+		return fetch_all("Select ManufactureName, id FROM 2013NewFall_Manufactures");
+	}
+	
 	static public function Save($row)
 	{
 		$conn = GetConnection();		

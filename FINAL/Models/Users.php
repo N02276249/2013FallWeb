@@ -26,6 +26,11 @@ class Users
 			return fetch_all($sql);
 		}
 	}
+
+	static public function GetSelectList()
+	{
+		return fetch_all("Select FirstName, LastName, id FROM 2013NewFall_Users");
+	}
 	
 	
 	static public function Save($row)

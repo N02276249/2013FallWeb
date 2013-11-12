@@ -9,12 +9,24 @@ class Products
 	{
 		if (isset($id))
 		{
-			return fetch_one("SELECT * FROM 2013NewFall_Products WHERE id='$id'");
+			$sql = "	Select *, P.id AS P_id, K.id AS K_id, M.id AS M_id 
+						From 2013NewFall_Products P 
+							JOIN 2013NewFall_Keywords K on P.ProductType = K.id
+							JOIN 2013NewFall_Manufactures M on P.Manufacture_id = M.id
+						WHERE P.id='$id'							
+					";			
+					
+			return fetch_one($sql);
 		}
 		
 		else 
 		{
-			return fetch_all('Select * From 2013NewFall_Products P left join 2013NewFall_Keywords K on P.ProductType = K.id left join 2013NewFall_Manufactures M on P.Manufacture_id = M.id');
+			$sql = "	Select *, P.id AS P_id, K.id AS K_id, M.id AS M_id 
+						From 2013NewFall_Products P 
+							JOIN 2013NewFall_Keywords K on P.ProductType = K.id
+							JOIN 2013NewFall_Manufactures M on P.Manufacture_id = M.id
+					";
+			return fetch_all($sql);
 		}
 	}
 	
@@ -23,9 +35,9 @@ class Products
 		$conn = GetConnection();
 		$row2 = Products::Encode($row, $conn);
 		if ($row['id']) {
-			$sql = " UPDATE 2013NewFall_Products " . " Set Model = '$row2[Model]', Description = '$row2[Description]', Price = '$row2[Price]', InStock = '$row2[InStock]', ProductTypes = '$row2[ProductTypes]', Manufacture_id = '$row2[Manufacture_id]' " . " WHERE id = $row2[id] ";
+			$sql = " UPDATE 2013NewFall_Products " . " Set Model = '$row2[Model]', Description = '$row2[Description]', Price = '$row2[Price]', InStock = '$row2[InStock]', ProductType = '$row2[ProductType]', Manufacture_id = '$row2[Manufacture_id]' " . " WHERE id = $row2[id] ";
 		} else {
-			$sql = " Insert Into 2013NewFall_Products (`Model`, `Description`, Price, InStock, Zip, ProductTypes, 2013NewFall_Manufacture_id) " . " Values ('$row2[Model]', '$row2[Description]', '$row2[Price]', '$row2[InStock]', '$row2[ProductTypes]', '$row2[Manufacture_id]') ";
+			$sql = " Insert Into 2013NewFall_Products (`Model`, `Description`, Price, InStock, Zip, ProductType, 2013NewFall_Manufacture_id) " . " Values ('$row2[Model]', '$row2[Description]', '$row2[Price]', '$row2[InStock]', '$row2[ProductType]', '$row2[Manufacture_id]') ";
 		}
 
 		$conn -> query($sql);
@@ -40,23 +52,23 @@ class Products
 	}
 
 	static public function Blank() {
-		return array('id' => null, 'Model' => null, 'Description' => null, 'Price' => null, 'InStock' => null, 'Zip' => null, 'ProductTypes' => null, 'Manufacture_id' => null);
+		return array('id' => null, 'Model' => null, 'Description' => null, 'Price' => null, 'InStock' => null, 'Zip' => null, 'ProductType' => null, 'Manufacture_id' => null);
 	}
 
 	static public function Validate($row) {
 		$errors = array();
 		if (!$row['Model'])
 			$errors['Model'] = ' is required';
+		if (!$row['Description'])
+			$errors['Description'] = ' is required';
 		if (!$row['Price'])
 			$errors['Price'] = ' is required';
 		if (!$row['InStock'])
 			$errors['InStock'] = ' is required';
-		if (!$row['Zip'])
-			$errors['Zip'] = ' is required';
-		else if (!is_numeric($row['Zip']))
-			$errors['Zip'] = ' must be a number';
-		if (!isset($row['ProductTypes']))
-			$errors['ProductTypes'] = ' is required';
+		else if (!is_numeric($row['InStock']))
+			$errors['InStock'] = ' must be a number';
+		if (!isset($row['ProductType']))
+			$errors['ProductType'] = ' is required';
 		if (!$row['Manufacture_id'])
 			$errors['Manufacture_id'] = ' is required';
 		else if (!is_numeric($row['Manufacture_id']))

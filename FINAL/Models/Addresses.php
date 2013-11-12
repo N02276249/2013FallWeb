@@ -17,7 +17,7 @@ class Addresses {
 		}
 	}
 	
-	static public function GetSelectListFor($id)
+	static public function GetSelectList()
 	{
 		return fetch_all("Select id, Street1, Street2, City, State, Zip FROM 2013NewFall_Addresses");
 	}
