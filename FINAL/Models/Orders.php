@@ -9,7 +9,7 @@ class Orders
 	{
 		if (isset($id))
 		{
-			$sql = "	SELECT *, O.id AS O_id, U.id AS U_id, P.id AS P_id, A.id AS A_id, OD.id AS OD_id, PR.id AS PR_id, M.id AS M_id, OP.id AS OP_id, O.2013NewFall_Users_id AS Users_id 
+			$sql = "	SELECT *, O.id AS O_id, U.id AS U_id, P.id AS P_id, A.id AS A_id, OD.id AS OD_id, PR.id AS PR_id, M.id AS M_id, O.2013NewFall_Users_id AS Users_id 
 						FROM 2013NewFall_Orders O 
 							JOIN 2013NewFall_Users U ON O.2013NewFall_Users_id = U.id
 							JOIN 2013NewFall_Payments P ON O.Payments_id = P.id
@@ -17,7 +17,6 @@ class Orders
 							JOIN 2013NewFall_OrderDetails OD ON OD.Orders_id = O.id
 							JOIN 2013NewFall_Products PR ON OD.Products_id = PR.id
 							JOIN 2013NewFall_Manufactures M ON PR.Manufacture_id = M.id
-							JOIN 2013NewFall_Opinion OP ON O.id = OP.Orders_id
 						WHERE O.id='$id'
 					";
 			return fetch_one($sql);
@@ -25,7 +24,17 @@ class Orders
 		
 		else 
 		{
-			return fetch_all('SELECT *, O.2013NewFall_Users_id AS Users_id, O.id AS O_id, U.id AS U_id, P.id AS P_id, A.id AS A_id, OD.id AS OD_id, PR.id AS PR_id, M.id AS M_id, OP.id AS OP_id From 2013NewFall_Orders O left join 2013NewFall_Users U on O.2013NewFall_Users_id = U.id left join 2013NewFall_Payments P on O.Payments_id = P.id left join 2013NewFall_Addresses A on O.Address_id = A.id left join 2013NewFall_OrderDetails OD on OD.Orders_id = O.id left join 2013NewFall_Products PR on OD.Products_id = PR.id left join 2013NewFall_Manufactures M on PR.Manufacture_id = M.id left join 2013NewFall_Opinion OP on O.id = OP.Orders_id');
+			$sql = "	SELECT *, O.2013NewFall_Users_id AS Users_id, O.id AS O_id, U.id AS U_id, P.id AS P_id, A.id AS A_id, OD.id AS OD_id, PR.id AS PR_id, M.id AS M_id
+						From 2013NewFall_Orders O
+							JOIN 2013NewFall_Users U on O.2013NewFall_Users_id = U.id
+							JOIN 2013NewFall_Payments P on O.Payments_id = P.id
+							JOIN 2013NewFall_Addresses A on O.Address_id = A.id
+							JOIN 2013NewFall_OrderDetails OD on OD.Orders_id = O.id
+							JOIN 2013NewFall_Products PR on OD.Products_id = PR.id
+							JOIN 2013NewFall_Manufactures M on PR.Manufacture_id = M.id
+					";
+			
+			return fetch_all($sql);
 		}
 	}
 

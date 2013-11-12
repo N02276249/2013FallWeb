@@ -25,8 +25,8 @@ function fetch_all($sql)
 	$conn = GetConnection();
 	$result = $conn->query($sql);
 	
-	echo $conn->error;
-	print_r($sql);
+//	echo $conn->error;
+//	print_r($sql);
 	
 	while ($rs = $result->fetch_assoc())
 	{
@@ -40,7 +40,7 @@ function fetch_all($sql)
 function fetch_one($sql)
 {
 	$arr = fetch_all($sql);
-	print_r($sql);
+//	print_r($sql);
 	return $arr[0];
 }
 

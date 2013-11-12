@@ -15,7 +15,6 @@
 				<th>Payment</th>
 				<th>Product</th>
 				<th>Price</th>
-				<th>Feedback</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -28,7 +27,6 @@
 					<td>XXXX-XXXX-XXXX-<?=substr($value['Number'], -4);?> EXP: <?=substr($value['Expiration'], 0, -3);?></td>
 					<td><?=$value['ManufactureName']?> <?=$value['Model']?></td>
 					<td><?=$value['Price']?></td>
-					<td><?=$value['OpinionValue']?></td>
 					<td>
 						<a class="glyphicon glyphicon-file" href="?action=details&id=<?=$value['O_id']?>&format=dialog" data-toggle="modal" data-target="#myModal"></a>
 						<a class="glyphicon glyphicon-pencil" href="?action=edit&id=<?=$value['O_id']?>&format=dialog"  data-toggle="modal" data-target="#myModal"</a>

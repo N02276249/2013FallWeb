@@ -29,6 +29,11 @@ class Products
 			return fetch_all($sql);
 		}
 	}
+
+	static public function GetSelectList()
+	{
+		return fetch_all("Select id, Model FROM 2013NewFall_Products");
+	}	
 	
 	static public function Save($row) 
 	{
