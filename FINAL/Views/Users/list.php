@@ -1,7 +1,7 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet">
 
 <style>
-	.table tr.success2, .table tr.success2 td
+	.table tr.hightlight, .table tr.hightlight td
 	{
 		background-color: #FFAA00 !important;	
 	}
@@ -37,16 +37,7 @@
 			</thead>
 			<tbody>
 				<? foreach ($model as $value): ?>
-					<tr class="<?=$value['U_id']==$_REQUEST['id'] ? 'success' : '' ?> ">
-						<td><?=$value['FirstName']?></td> 
-						<td><?=$value['LastName']?></td>
-						<td><?=$value['Name']?></td>
-						<td>
-							<a class="glyphicon glyphicon-file" href="?action=details&id=<?=$value['U_id']?>" ></a>
-							<a class="glyphicon glyphicon-pencil" href="?action=edit&id=<?=$value['U_id']?>" ></a>
-							<a class="glyphicon glyphicon-trash" href="?action=delete&id=<?=$value['U_id']?>" ></a>												
-						</td>				
-					</tr>
+					<? include 'item.php'; ?>
 				<? endforeach; ?>
 			</tbody>
 		</table>
@@ -59,6 +50,7 @@
 <? function Scripts()
 { ?>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
+	
 	<script type="text/javascript">
 		$(function()
 		{
@@ -72,24 +64,24 @@
 			/*
 			$(".table tr").click(function()
 			{
-				$(this).toggleClass("success2");
+				$(this).toggleClass("hightlight");
 			});
 			*/
 			$(".table a").click(function()
 			{
 
 				
-				if($(this).closest("tr").hasClass("success2"))
+				if($(this).closest("tr").hasClass("hightlight"))
 				{
-					$(".success2").removeClass("success2");
+					$(".hightlight").removeClass("hightlight");
 					$("#table-wrapper").removeClass("col-md-6").addClass("col-md-12");
 					$("#details").html('');
 				}
 				
 				else
 				{
-					$(".success2").removeClass("success2");
-					$(this).closest("tr").addClass("success2");
+					$(".hightlight").removeClass("hightlight");
+					$(this).closest("tr").addClass("hightlight");
 					$("#table-wrapper").addClass("col-md-6").removeClass("col-md-12");
 					
 					$("#details").load(this.href, {format: "plain"}, function()
@@ -104,7 +96,22 @@
 			
 			var HandleSubmit = function()
 			{
-				$("#details").html(JSON.stringify($(this).serializeArray()));
+				var data = $(this).serializeArray();
+				data.push({name:'format', value:'plain'});
+				$.post(this.action, data, function(results)
+				{
+					if($(results).find("form").length)
+					{
+						$("#details").html(results);						
+					}
+					
+					else
+					{
+						$(".hightlight").html($(results).html());
+					}
+
+				});
+				
 				return false;
 			}
 		})

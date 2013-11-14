@@ -28,13 +28,25 @@ switch ($action)
 
 		if(!$errors)
 		{
-			header("Location: ?status=Saved&id=$_REQUEST[id]");
-			die();		
+			if($format == 'plain')
+			{
+				$view = 'item.php';
+				$value = Users::Get($_REQUEST['id']);$_REQUEST;
+			}	
+			
+			else
+			{
+				header("Location: ?status=Saved&id=$_REQUEST[id]");
+				die();		
+			}
 		}
 		
-		$model	= $_REQUEST;
-		$view	= 'edit.php';
-		$titl	= "Edit: $model[FirstName] $model[LastName]";
+		else
+		{
+			$model	= $_REQUEST;
+			$view	= 'edit.php';
+			$titl	= "Edit: $model[FirstName] $model[LastName]";
+		}
 		break;				
 		
 	case 'edit':	
