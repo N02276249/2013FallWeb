@@ -3,6 +3,7 @@ include_once '../../inc/_global.php';
 
 @$action = $_REQUEST['action'];
 @$format = $_REQUEST['format'];
+$errors = null;
 
 
 switch ($action)
@@ -28,10 +29,10 @@ switch ($action)
 
 		if(!$errors)
 		{
-			if($format == 'plain')
+			if($format == 'plain' || $format == 'json')
 			{
 				$view = 'item.php';
-				$value = Users::Get($_REQUEST['id']);$_REQUEST;
+				$value = $model = Users::Get($_REQUEST['id']);$_REQUEST;
 			}	
 			
 			else
@@ -86,6 +87,10 @@ switch ($format)
 	
 	case 'plain':
 		include $view;
+		break;
+		
+	case 'json':
+		echo json_encode(array('model' => $model, 'errors' => $errors));
 		break;
 	
 	default:
