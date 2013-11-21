@@ -76,7 +76,6 @@ class Users
 		if (!$row['FirstName']) $errors['FirstName'] = ' is required';
 		if (!$row['LastName']) $errors['LastName'] = ' is required';
 		if (!isset($row['UserType'])) $errors['UserType'] = ' is required';
-		# else if (!is_numeric($row['UserType'])) $errors['UserType'] = ' must be a number';
 		
 		if(count($errors) == 0)
 		{

@@ -12,7 +12,18 @@
 			<dt>Price</dt>
 			<dd>$<?=$model['Price']?></dd>
 			<dt>Availability</dt>
-			<dd><?=$model['InStock']?></dd>	
+			<dd><?
+					if($model['InStock'] > 0)
+					{
+				?>		In Stock	<?
+					}
+					
+					else
+					{
+				?>		Currently Not Available	<?			
+					}
+				?>
+					</dd>
 		</dl>
 	</div>
 	
@@ -21,7 +32,7 @@
 		if($model['InStock'] > 0)
 		{?>
 			<div>
-				<input type="submit" class="form-control btn btn-success" value="Buy Now"/>
+				<input type="submit" class="form-control btn btn-success" value="Add to Cart"/>
 			</div>
 		<?}
 		else
