@@ -10,11 +10,12 @@
 			
 			  		<div class="media attribution">
 						<a class="pull-left" href="?action=details&id=<?=$value['P_id']?>&format=dialog" data-toggle="modal" data-target="#myModal" class="img">
-			    			<img src="<?=$value['ImgURL']?>" height="128px" width="128px" alt="128x128" />
+			    			<img src="<?=$value['ImgURL']?>" width="128px" alt="128x128" />
 			    		</a>
 			    		<div class="media-body">
 			    			<h4 class="media-heading"><?=$value['ManufactureName']?> <?=$value['Model']?></h4>
 			    			<p><?=$value['Description']?></p>
+			    			<button type="button" class="pull-right btn btn-success btn-sm" align="right">Add to Cart</button>
 			    		</div>
 					</div>
 					
@@ -28,6 +29,7 @@
 <? function Scripts()
 { ?>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
-	</script>
-	
+</script>		
 <? } ?>
+
+

@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="media attribution" align="center">
 	<a class="pull-top" class="img">
-		<img src="<?=$model['ImgURL']?>" height="256px" width="256px" alt="256x256" />
+		<img src="<?=$model['ImgURL']?>" width="200px" alt="200x200" />
 	</a>
 	</div>
 	<div class="media-body">
