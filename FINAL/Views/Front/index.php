@@ -73,7 +73,7 @@ switch ($format)
 		break;
 	
 	default:
-		include '../Shared/_layout.php';
+		include '../Shared/_frontLayout.php';
 		break;
 }
 ?>

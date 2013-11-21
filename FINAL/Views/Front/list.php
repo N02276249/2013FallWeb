@@ -9,12 +9,12 @@
 				<li class="list-group-item">
 			
 			  		<div class="media attribution">
-						<a class="pull-left" href="#" class="img">
-			    			<img src="<?=$value['ImgURL']?>" alt="64x64" />
+						<a class="pull-left" href="?action=details&id=<?=$value['P_id']?>&format=dialog" data-toggle="modal" data-target="#myModal" class="img">
+			    			<img src="<?=$value['ImgURL']?>" height="128px" width="128px" alt="128x128" />
 			    		</a>
 			    		<div class="media-body">
 			    			<h4 class="media-heading"><?=$value['ManufactureName']?> <?=$value['Model']?></h4>
-			    			<p><?=substr($value['Description'], 0, 32)?>...</p>
+			    			<p><?=$value['Description']?></p>
 			    		</div>
 					</div>
 					
