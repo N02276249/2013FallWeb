@@ -61,15 +61,8 @@
 
 <script id="tbody-template" type="text/x-handlebars-template">
         {{#each .}}
-                <tr>
-                                <td>{{FirstName}}</td>
-                                <td>{{LastName}}</td>
-                                <td>{{Name}}</td>
-                                <td>
-                                        <a class="glyphicon glyphicon-file" href="?action=details&id={{U_id}}" ></a>
-                                        <a class="glyphicon glyphicon-pencil" href="?action=edit&id={{U_id}}" ></a>
-                                        <a class="glyphicon glyphicon-trash" href="?action=delete&id={{U_id}}" ></a>
-                                </td>
+                <tr>                                
+                            {{> row-template}}
                 </tr>
         {{/each}}
 </script>
@@ -83,10 +76,14 @@
         <script type="text/javascript">
                 $(function()
                 {
-                		var tableTemplate = Handlebars.compile($("#tbody-template").html());
-                		$(".table tbody").html(tableTemplate(<?=json_encode($model);?>))  
-                		  
+						var templateRow = Handlebars.compile($("#row-template").html());
+						Handlebars.registerPartial("row-template", templateRow);
+						var tableTemplate = Handlebars.compile($("#tbody-template").html());
+						
+						$(".table tbody").html(tableTemplate(<?=json_encode($model);?>))
+						
                         $(".table").dataTable();
+                        
                         $(".alert .close").click(function()
                         {
                                 $(this).closest(".alert").slideUp();
@@ -125,9 +122,8 @@
                                 
                                 if(results.errors){
                                         $("#details").html(results);                                        
-                                }else{
-                                        var template = Handlebars.compile($("#row-template").html());                                        
-                                        $(".highlight").html(template(results.model));
+                                }else{                                        
+                                        $(".highlight").html(templateRow(results.model));
                                 }
                                 
                         }, 'json');
