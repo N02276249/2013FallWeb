@@ -15,6 +15,8 @@
 				<th>Payment</th>
 				<th>Product</th>
 				<th>Price</th>
+				<th>Order Date</th>
+				<th>Ship Date</th>
 				<th></th>
 			</tr>
 		</thead>
