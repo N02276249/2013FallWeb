@@ -86,7 +86,6 @@
                         $(".alert .close").click(function()
                         {
                                 $(this).closest(".alert").slideUp();
-                                $(".success").removeClass("success");
                         });
                         
                         $("#add-link").click(function()
@@ -116,7 +115,8 @@
                 var HandleSubmit = function (){
                         var data = $(this).serializeArray();
                         data.push({name:'format', value:'json'});
-                        $.post(this.action, data, function(results){
+                        $.post(this.action, data, function(results)
+                        {
                                 
                                 if(results.errors)
                                 {

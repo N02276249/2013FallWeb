@@ -32,7 +32,7 @@
 		if($model['InStock'] > 0)
 		{?>
 			<div>
-				<input type="submit" class="form-control btn btn-success" value="Add to Cart"/>
+				<input type="submit" class="form-control btn btn-success" value="Buy Now"/>
 			</div>
 		<?}
 		else

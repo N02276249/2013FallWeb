@@ -9,12 +9,12 @@ class Orders
 	{
 		if (isset($id))
 		{
-			$sql = "	SELECT *, O.id AS O_id, U.id AS U_id, P.id AS P_id, A.id AS A_id, OD.id AS OD_id, PR.id AS PR_id, M.id AS M_id, O.2013NewFall_Users_id AS Users_id 
+			$sql = "	SELECT *, O.id AS O_id, U.id AS U_id, P.id AS P_id, A.id AS A_id, OD.id AS OD_id, PR.id AS PR_id, M.id AS M_id, O.2013NewFall_Users_id AS Users_id, O.OrderNumber AS O_OrderNumber, OD.OrderNumber AS OD_OrderNumber
 						FROM 2013NewFall_Orders O 
 							JOIN 2013NewFall_Users U ON O.2013NewFall_Users_id = U.id
 							JOIN 2013NewFall_Payments P ON O.Payments_id = P.id
 							JOIN 2013NewFall_Addresses A ON O.Address_id = A.id
-							JOIN 2013NewFall_OrderDetails OD ON OD.Orders_id = O.id
+							JOIN 2013NewFall_OrderDetails OD ON OD.OrderNumber = O.OrderNumber
 							JOIN 2013NewFall_Products PR ON OD.Products_id = PR.id
 							JOIN 2013NewFall_Manufactures M ON PR.Manufacture_id = M.id
 						WHERE O.id='$id'
@@ -24,12 +24,12 @@ class Orders
 		
 		else 
 		{
-			$sql = "	SELECT *, O.2013NewFall_Users_id AS Users_id, O.id AS O_id, U.id AS U_id, P.id AS P_id, A.id AS A_id, OD.id AS OD_id, PR.id AS PR_id, M.id AS M_id
+			$sql = "	SELECT *, O.2013NewFall_Users_id AS Users_id, O.id AS O_id, U.id AS U_id, P.id AS P_id, A.id AS A_id, OD.id AS OD_id, PR.id AS PR_id, M.id AS M_id, O.OrderNumber AS O_OrderNumber, OD.OrderNumber AS OD_OrderNumber
 						From 2013NewFall_Orders O
 							JOIN 2013NewFall_Users U on O.2013NewFall_Users_id = U.id
 							JOIN 2013NewFall_Payments P on O.Payments_id = P.id
 							JOIN 2013NewFall_Addresses A on O.Address_id = A.id
-							JOIN 2013NewFall_OrderDetails OD on OD.Orders_id = O.id
+							JOIN 2013NewFall_OrderDetails OD on OD.OrderNumber = O.OrderNumber
 							JOIN 2013NewFall_Products PR on OD.Products_id = PR.id
 							JOIN 2013NewFall_Manufactures M on PR.Manufacture_id = M.id
 					";

@@ -30,10 +30,10 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">All Products</a></li>
-                <li><a href="#">Computers</a></li>
-                <li><a href="#">Phones</a></li>
-                <li><a href="#">Televisions</a></li>
+                <li><a href="../Front/">All Products</a></li>
+                <li><a href="?action=type&id=16>">Televisions</a></li>
+                <li><a href="?action=type&id=17">Computers</a></li>
+                <li><a href="?action=type&id=18">Phones</a></li>
               </ul>
             </li>
           </ul>

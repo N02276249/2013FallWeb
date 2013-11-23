@@ -11,10 +11,35 @@ switch ($action)
 		$model	= Products::Get($_REQUEST['id']);
 		$view 	= 'details.php';
 		$title	= "Details for: $model[Model]";
-		break;					
+		break;
+		
+	case 'type':
+		$model	= Products::FrontType($_REQUEST['id']);
+		$view	= 'list.php';
+		$title	= "Products";
+		break;		
+				
+	case 'purchase':
+		$model		= Front::Get();
+		$product	= Products::Get($_REQUEST['id']);
+		$view 		= 'purchase.php';
+		$title		= "Purchasing: $product[Model]";
+		break;		
+							
+	case 'save':
+		
+		Front::Save($_REQUEST);
+
+			header("Location: ?");
+			die();		
+		
+		$model	= $_REQUEST;
+		$view	= 'purchase.php';
+		$title	= "Purchasing: $product[Model]";
+		break;										
 		
 	default:	
-		$model	= Products::Get();
+		$model	= Products::FrontAll();
 		$view	= 'list.php';
 		$title	= "Products";
 		break;

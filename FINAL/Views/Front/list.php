@@ -16,7 +16,7 @@
 			    			<h4 class="media-heading"><?=$value['ManufactureName']?> <?=$value['Model']?></h4>
 			    			<p><?=$value['Description']?></p>
 			    			<button type="button" class="btn btn-info btn-lg disabled">$<?=$value['Price']?></button>
-			    			<button type="button" class="pull-right btn btn-success btn-sm" align="right">Add to Cart</button>
+			    			<a href="?action=purchase&id=<?=$value['P_id']?>&format=dialog" class="pull-right btn btn-success btn-sm" align="right" role="button" data-toggle="modal" data-target="#myModal">Buy Now</a>
 			    		</div>
 					</div>
 					

@@ -30,18 +30,23 @@ class Payments
 			return fetch_all($sql);
 		}
 	}
+	
+	static public function GetSelectList()
+	{
+		return fetch_all("Select Number, Expiration, id FROM 2013NewFall_Payments");
+	}
 		
 	
 	static public function Save($row) 
 	{
+		print_r($row);
 		$conn = GetConnection();
 		$row2 = Payments::Encode($row, $conn);
 		if ($row['id']) {
 			$sql = " UPDATE 2013NewFall_Payments " . " Set Number = '$row2[Number]', Expiration = '$row2[Expiration]', CID = '$row2[CID]', Address_id = '$row2[Address_id]', PaymentTypes = '$row2[PaymentTypes]',  2013NewFall_Users_id = 'row2[Users_id]' " 
 			. " WHERE id = $row2[id] ";
 		} else {
-			$sql = " Insert Into 2013NewFall_Payments (`Number`, `Expiration`, CID, State, Address_id, PaymentTypes, 2013NewFall_Users_id) " . " Values ('$row2[Number]', '$row2[Expiration]', '$row2[CID]', 
-			'$row2[State]', '$row2[Address_id]', '$row2[PaymentTypes]', '$row2[Users_id]') ";
+			$sql = " Insert Into 2013NewFall_Payments (`Number`, `Expiration`, `CID`, `Address_id`, `PaymentTypes`, `2013NewFall_Users_id`) " . " Values ('$row2[Number]', '$row2[Expiration]', '$row2[CID]', '$row2[Address_id]', '$row2[PaymentTypes]', '$row2[Users_id]') ";
 		}
 
 		$conn -> query($sql);
