@@ -3,7 +3,7 @@
 		color: red;
 	}
 </style>
-
+<? $selectedUser = '2'?>
 <div class="container">
 	
 	<? if (isset($errors) && $errors): ?>
@@ -35,7 +35,7 @@
 			<label for="Address_id" class="col-sm-2 control-label">Address</label>
 			<div class="col-sm-10">
 				<select name="Address_id" id="Address_id" class="form-control ">				
-					<? foreach (Addresses::GetSelectList() as $addressRs): ?>
+					<? foreach (Addresses::GetSelectList($selectedUser) as $addressRs): ?>
 		            	<option value="<?=$addressRs['id'] ?>"><?=$addressRs['Street1'] ?></option>
 					<? endforeach; ?>
 				</select>
@@ -46,7 +46,7 @@
 			<label for="Payments_id" class="col-sm-2 control-label">Payments</label>
 			<div class="col-sm-10">
 				<select name="Payments_id" id="Payments_id" class="form-control ">				
-					<? foreach (Payments::GetSelectList() as $paymentsRs): ?>
+					<? foreach (Payments::GetSelectList($selectedUser) as $paymentsRs): ?>
 		            	<option value="<?=$paymentsRs['id'] ?>">XXXX-XXXX-XXXX-<?=substr($paymentsRs['Number'], -4);?> EXP: <?=substr($paymentsRs['Expiration'], 0, -3);?></option>
 					<? endforeach; ?>
 				</select>
@@ -60,11 +60,10 @@
 		</div>		
 	</form>
 </div>
-
 <script type="text/javascript">
         	$(function(){
-                $("#Users_id").val(<?=$model['Users_id'] ?>);
-                $("#Address_id").val(<?=$model["Address_id"] ?>);
-                $("#Payments_id").val(<?=$model["Payments_id"] ?>);
-					})        
-</script>
+        		  							
+	$(document).on('change', '#Users_id', function(){ alert("It Worked!"); });
+				
+				});
+				</script>

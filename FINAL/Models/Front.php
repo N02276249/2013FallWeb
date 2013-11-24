@@ -21,7 +21,7 @@ class Front
 	
 	static public function Save($row) 
 	{
-		$random = rand(0, 99999);
+		$random = date('U');
 		@$orderDate = date('Y-m-d');
 		@$shipDate = date('Y-m-d', strtotime("+3 days"));
 		$conn = GetConnection();

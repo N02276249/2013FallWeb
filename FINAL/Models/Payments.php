@@ -31,9 +31,9 @@ class Payments
 		}
 	}
 	
-	static public function GetSelectList()
+	static public function GetSelectList($user)
 	{
-		return fetch_all("Select Number, Expiration, id FROM 2013NewFall_Payments");
+		return fetch_all("Select Number, Expiration, id FROM 2013NewFall_Payments P WHERE P.2013NewFall_Users_id = '$user'");
 	}
 		
 	
