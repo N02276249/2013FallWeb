@@ -17,7 +17,7 @@
                         <? endforeach; ?>
                 </ul>
         <? endif; ?>
-        <form action="./receipt.php" method="post" class="form-horizontal row">
+        <form action="?action=save" method="post" class="form-horizontal row">
                 
                 <input type="hidden" name="product_id" value="<?=$product['id'] ?>" />
                 <input type="hidden" name="product_price" value="<?=$product['Price'] ?>" />
