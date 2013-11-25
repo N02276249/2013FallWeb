@@ -5,6 +5,8 @@
 </style>
 
 <div class="container">
+	<h3>Purchase <?=$product['Model'] ?> for $<?=$product['Price']?></h3>
+	<br>
         
         <? if (isset($errors) && $errors): ?>
                 <ul class="error">
@@ -15,7 +17,7 @@
                         <? endforeach; ?>
                 </ul>
         <? endif; ?>
-        <form action="?action=save" method="post" class="form-horizontal row">
+        <form action="./receipt.php" method="post" class="form-horizontal row">
                 
                 <input type="hidden" name="product_id" value="<?=$product['id'] ?>" />
                 <input type="hidden" name="product_price" value="<?=$product['Price'] ?>" />

@@ -33,8 +33,23 @@ switch ($action)
 		$title		= "Create A New User";
 		break;	
 		
+	case 'newAddress':
+
+		$model		= Addresses::Blank();
+		$product	= Products::Get($_REQUEST['product_id']);
+		$view		= 'purchaseNewAddress.php';
+		$titl		= "Create New Address";		
+		break;
+		
+	case 'newPayment':	
+		$model		= Payments::Blank();
+		$product	= Products::Get($_REQUEST['product_id']);
+		$view		= 'purchaseNewPayment.php';
+		$titl		= "Create New Payment";		
+		break;				
 		
 	case 'saveUser':
+		$product	= Products::Get($_REQUEST['product_id']);
 		$errors = Users::Validate($_REQUEST);
 		if(!$errors)
 		{
@@ -43,15 +58,53 @@ switch ($action)
 
 		if(!$errors)
 		{
-			header("Location: ?");
+			header("Location: ?action=newAddress&product_id=$product[id]");
 			die();		
 		}
 		
 		$model	= $_REQUEST;
 		$view	= 'purchaseNewUser.php';
-		$title	= "Edit:" ;
-		break;	                               
-                
+		$title	= "Edit New User" ;
+		break;				               
+		
+	case 'saveAddress':
+		$product	= Products::Get($_REQUEST['product_id']);
+		$errors = Addresses::Validate($_REQUEST);
+		if(!$errors)
+		{
+			$errors = Addresses::Save($_REQUEST);
+		}
+
+		if(!$errors)
+
+		{
+			header("Location: ?action=newPayment&product_id=$product[id]");
+			die();		
+		}
+		
+		$model	= $_REQUEST;
+		$view	= 'purchaseNewAddress.php';
+		$title	= "Edit New Address";
+		break;
+		
+	case 'savePayment':
+		$product	= Products::Get($_REQUEST['product_id']);
+		$errors = Payments::Validate($_REQUEST);
+		if(!$errors)
+		{
+			$errors = Payments::Save($_REQUEST);
+		}
+
+		if(!$errors)
+		{
+			header("Location: ?action=purchase&product_id=$product[id]");
+			die();		
+		}
+		
+		$model	= $_REQUEST;
+		$view	= 'purchaseNewPayment.php';
+		$title	= "Edit New Payment";
+		break;						
 		
 		
 		
@@ -70,12 +123,12 @@ switch ($action)
 		$title	= "Purchasing: $product[Model]";
 		break;	
 		
-        case 'purchase':
-	        $model          = Front::Get();
-	        $product        = Products::Get($_REQUEST['product_id']);
-	        $view           = 'purchase.php';
-	        $title          = "Purchasing: $product[Model]";
-	        break; 											
+    case 'purchase':
+        $model          = Front::Get();
+        $product        = Products::Get($_REQUEST['product_id']);
+        $view           = 'purchase.php';
+        $title          = "Purchasing: $product[Model]";
+        break; 											
 		
 	default:	
 		$model	= Products::FrontAll();
