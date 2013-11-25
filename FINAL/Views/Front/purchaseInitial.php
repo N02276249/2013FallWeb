@@ -1,6 +1,6 @@
 <div class="container">
 	<div>
-		<a href="?action=purchaseReady&product_id=<?=$product['id']?>" class="form-control btn-sm btn-primary">Yes</a>
+		<a href="?action=purchase&product_id=<?=$product['id']?>" class="form-control btn-sm btn-primary">Yes</a>
 	</div>
 	
 	<br>

@@ -27,12 +27,33 @@ switch ($action)
 		break;		
 		
 	case 'newUser':
-		$model		= Users::Blank();
+        $model      = Users::Blank();
 		$product	= Products::Get($_REQUEST['product_id']);
 		$view 		= 'purchaseNewUser.php';
 		$title		= "Create A New User";
 		break;	
-		break;
+		
+		
+	case 'saveUser':
+		$errors = Users::Validate($_REQUEST);
+		if(!$errors)
+		{
+			$errors = Users::Save($_REQUEST);
+		}
+
+		if(!$errors)
+		{
+			header("Location: ?");
+			die();		
+		}
+		
+		$model	= $_REQUEST;
+		$view	= 'purchaseNewUser.php';
+		$title	= "Edit:" ;
+		break;	                               
+                
+		
+		
 		
 	case 'purchasePayment':
 		break;	
@@ -47,7 +68,14 @@ switch ($action)
 		$model	= $_REQUEST;
 		$view	= 'purchase.php';
 		$title	= "Purchasing: $product[Model]";
-		break;										
+		break;	
+		
+        case 'purchase':
+	        $model          = Front::Get();
+	        $product        = Products::Get($_REQUEST['product_id']);
+	        $view           = 'purchase.php';
+	        $title          = "Purchasing: $product[Model]";
+	        break; 											
 		
 	default:	
 		$model	= Products::FrontAll();

@@ -17,9 +17,9 @@ class Addresses {
 		}
 	}
 	
-	static public function GetSelectList($user)
+	static public function GetSelectList()
 	{
-		return fetch_all("Select id, Street1, Street2, City, State, Zip FROM 2013NewFall_Addresses A WHERE A.2013NewFall_Users_id = '$user'");
+		return fetch_all("Select id, Street1, Street2, City, State, Zip FROM 2013NewFall_Addresses A");
 	}
 	
 	static public function Save($row) 

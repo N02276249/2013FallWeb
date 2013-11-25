@@ -1,57 +1,47 @@
 <style type="text/css">
-	.error {
-		color: red;
-	}
+	.error { color: red; }
 </style>
-<? $selectedUser = '2'?>
+
 <div class="container">
 	
 	<? if (isset($errors) && $errors): ?>
 		<ul class="error">
 			<? foreach ($errors as $key => $value): ?>
 				<li>
-					<label><?=$key ?>:</label><?=$value ?>
+					<label><?=$key?>:</label><?=$value?>
 				</li>
 			<? endforeach; ?>
 		</ul>
 	<? endif; ?>
-	<form action="?action=save" method="post" class="form-horizontal row">
+	<form action="?action=saveUser" method="post" class="form-horizontal row">
 		
 		<input type="hidden" name="product_id" value="<?=$product['id'] ?>" />
 		<input type="hidden" name="product_price" value="<?=$product['Price'] ?>" />
+		<input type="hidden" name="UserType" value="8" />
 		
-		<div class="form-group <?= isset($errors['Users_id']) ? 'has-error' : '' ?>">
-			<label for="Users_id" class="col-sm-2 control-label">Name</label>
+		<div class="form-group <?= isset($errors['FirstName']) ? 'has-error' : '' ?>">
+			<label for="FirstName" class="col-sm-2 control-label">First Name</label>
 			<div class="col-sm-10">
-				<select name="Users_id" id="Users_id" class="form-control ">				
-					<? foreach (Users::GetSelectList() as $UsersRs): ?>
-		            	<option value="<?=$UsersRs['id'] ?>"><?=$UsersRs['FirstName'] ?> <?=$UsersRs['LastName'] ?></option>
-					<? endforeach; ?>
-				</select>
+				<input type="text" name="FirstName" id="FirstName" placeholder="First Name" class="form-control" value="<?=$model['FirstName']?>"/>
+				<? if(isset($errors['FirstName'])): ?><span class ="error"><?=$errors['FirstName'] ?></span><? endif;?>
 			</div>
-		</div>	
+		</div>
+
+		<div class="form-group <?= isset($errors['LastName']) ? 'has-error' : '' ?>">
+			<label for="LastName" class="col-sm-2 control-label">Last Name</label>
+			<div class="col-sm-10">
+				<input type="text" name="LastName" id="LastName" placeholder="Last Name" class="form-control" value="<?=$model['LastName']?>" />
+				<? if(isset($errors['LastName'])): ?><span class ="error"><?=$errors['LastName'] ?></span><? endif;?>		
+			</div>
+		</div>
 		
-		<div class="form-group <?= isset($errors['Address_id']) ? 'has-error' : '' ?>">
-			<label for="Address_id" class="col-sm-2 control-label">Address</label>
+		<div class="form-group <?= isset($errors['Password']) ? 'has-error' : '' ?>">
+			<label for="Password" class="col-sm-2 control-label">Password</label>
 			<div class="col-sm-10">
-				<select name="Address_id" id="Address_id" class="form-control ">				
-					<? foreach (Addresses::GetSelectList($selectedUser) as $addressRs): ?>
-		            	<option value="<?=$addressRs['id'] ?>"><?=$addressRs['Street1'] ?></option>
-					<? endforeach; ?>
-				</select>
+				<input type="password" name="Password" id="Password" placeholder="Password" class="form-control" value="<?=$model['Password']?>" />		
+				<? if(isset($errors['Password'])): ?><span class ="error"><?=$errors['Password'] ?></span><? endif;?>					
 			</div>
-		</div>	
-		
-		<div class="form-group <?= isset($errors['Payments_id']) ? 'has-error' : '' ?>">
-			<label for="Payments_id" class="col-sm-2 control-label">Payments</label>
-			<div class="col-sm-10">
-				<select name="Payments_id" id="Payments_id" class="form-control ">				
-					<? foreach (Payments::GetSelectList($selectedUser) as $paymentsRs): ?>
-		            	<option value="<?=$paymentsRs['id'] ?>">XXXX-XXXX-XXXX-<?=substr($paymentsRs['Number'], -4);?> EXP: <?=substr($paymentsRs['Expiration'], 0, -3);?></option>
-					<? endforeach; ?>
-				</select>
-			</div>
-		</div>	
+		</div>
 						
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-lg-10">
@@ -60,10 +50,10 @@
 		</div>		
 	</form>
 </div>
+
 <script type="text/javascript">
-        	$(function(){
-        		  							
-	$(document).on('change', '#Users_id', function(){ alert("It Worked!"); });
-				
-				});
-				</script>
+        $(function(){
+                $("#UserType").val(<?=$model['UserType']?>);
+        })        
+</script>
+
