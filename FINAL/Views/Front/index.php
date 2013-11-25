@@ -19,12 +19,23 @@ switch ($action)
 		$title	= "Products";
 		break;		
 				
-	case 'purchase':
+	case 'purchaseInitial':
 		$model		= Front::Get();
 		$product	= Products::Get($_REQUEST['id']);
-		$view 		= 'purchase.php';
-		$title		= "Purchasing: $product[Model]";
+		$view 		= 'purchaseInitial.php';
+		$title		= "Are you a registered user?";
 		break;		
+		
+	case 'newUser':
+		$model		= Users::Blank();
+		$product	= Products::Get($_REQUEST['product_id']);
+		$view 		= 'purchaseNewUser.php';
+		$title		= "Create A New User";
+		break;	
+		break;
+		
+	case 'purchasePayment':
+		break;	
 							
 	case 'save':
 		
