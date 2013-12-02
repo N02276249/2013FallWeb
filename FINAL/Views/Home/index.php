@@ -7,12 +7,21 @@ $errors = null;
 
 switch ($action)
 {
+	
+	case 'categories':
+		$model	= Keywords::GetSelectListFor(5);
+		
+		break;
+		
+	case 'products':
+        $model	= Products::FrontType($_REQUEST['categoryID']);
+		break;
  
-        default:        
-                //$model        = Users::Get();
-                $view        = 'home.php';
-                $title        = "Users";
-                break;
+        
+ 	default:
+        $view	= 'home.php';
+        $title	= "Store";
+        break;
 }
 
 switch ($format)

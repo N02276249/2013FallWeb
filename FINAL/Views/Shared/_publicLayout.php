@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Electronics 'R Us - <?=@$title?></title>
+    <title>Electronics 'R' Us - <?=@$title?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <style type="text/css">
@@ -45,7 +45,7 @@
              </li>
              
           </ul>
-          <p class="navbar-text navbar-right"><a href="#" id="shopping-cart" class="navbar-link">Cart</a></p>
+          <p class="navbar-text navbar-right" id="shopping-cart"><a href="#" class="navbar-link">Cart</a></p>
         </div>
       </div>
     </div>

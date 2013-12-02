@@ -1,26 +1,26 @@
-<div container>
+<div class = "container">
 	
-	<div id="category-list">
+	<div>
 		<ul class="nav nav-pills" data-bind="foreach: categories">
-			<li data-bind="css: { active: currentCategory() == $data }" >
-				<a href="#" data-bind="text: Name, click: $root.selectCategory"></a>
-			</li>
+			<li><a href="#" data-bind="text: Name, click: $root.categoryClicked" >Cat 1</a></li>
 		</ul>
 	</div>
-	
-	<div id="item-list">
 		
+	<div data-bind="foreach: products" >
+		<div class="col-sm-3">
+			<div class="well">
+				<h5 data-bind="text: Model"></h5>
+			</div>
+		</div>
 	</div>
 	
-	<div id="shopping-cart-list">
-		
-	</div>
+	
 	
 </div>
 
 <script type="text/html" id="shopping-cart-template">
 	<span class="glyphicon glyphicon-shopping-cart"></span>
-	Cart
+	<a href="#">Cart</a>
 	<span class="badge">0</span>
 </script>
 
@@ -29,29 +29,31 @@
 {?>
 		<? global $model; ?>
 		
-	    <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
+	    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.0.0/knockout-min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.js"></script>
         
         <script type="text/javascript">
         $(function()
         {
-        	$("#shopping-cart").html($"#shopping-cart-template").html());
+        	$("#shopping-cart").html($("#shopping-cart-template").html());
         	
         	var vm = {
-				categories: ko.observableArray(),
-				currentCategory: ko.observable(),
-				
-				selectCategory: function()
-				{
-					vm.currentCategory(this);
-				}
-			};
+        		categories: ko.observableArray(),
+        		products: ko.observableArray(),
+        		
+        		categoryClicked: function(){
+					$.getJSON("?action=products&format=json", { categoryID: this.id } ,function(results){
+						vm.products(results.model);
+					})        			
+        		}
+        	}
+        	
         	ko.applyBindings(vm);
-        	$.getJson('?action=categories&format=json', null, function(results)
-        	{
-        		vm.categories(results.model);
-        	})
+        	
+			$.getJSON("?action=categories&format=json",function(results){
+				vm.categories(results.model);
+			})
         });
         </script>
 <? } ?>
