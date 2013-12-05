@@ -1,5 +1,6 @@
 <?php
 include_once '../../inc/_global.php';
+session_start();
 
 @$action = $_REQUEST['action'];
 @$format = $_REQUEST['format'];
@@ -15,6 +16,14 @@ switch ($action)
 		
 	case 'products':
         $model	= Products::FrontType($_REQUEST['categoryID']);
+		break;
+		
+	case 'addToCart':
+		if(!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
+		$cart = $_SESSION['cart'];
+		$cart[] = $_REQUEST['id'];
+		$_SESSION['cart'] = $cart;
+		header('Location: ?'); die();
 		break;
  
         
