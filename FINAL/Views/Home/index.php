@@ -4,6 +4,7 @@ session_start();
 
 @$action = $_REQUEST['action'];
 @$format = $_REQUEST['format'];
+if(!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
 $errors = null;
 
 switch ($action)
@@ -19,7 +20,7 @@ switch ($action)
 		break;
 		
 	case 'addToCart':
-		if(!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
+
 		$cart = $_SESSION['cart'];
 		$cart[] = $_REQUEST['id'];
 		$_SESSION['cart'] = $cart;

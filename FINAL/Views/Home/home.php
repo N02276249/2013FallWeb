@@ -8,9 +8,15 @@
 		
 	<div data-bind="foreach: products" >
 		<div class="col-sm-3">
-			<div class="well">
-				<h5 data-bind="text: Model"></h5>
-				<a data-bind="attr: { href='?action=addToCart&id=' + id} " >Add to Cart</a>
+			<div class="well clearfix">
+				<img alt="item image" height="128px" data-bind="attr: {src: ImgURL}" />
+				<h4 data-bind="text: ManufactureName"></h4> <h4 data-bind="text: Model"></h4>
+				<p data-bind="text: Description"></p>
+				<button type="button" class="btn btn-info btn disabled pull-left" data-bind="text: Price">Price</button>		
+                <a class="btn btn-success pull-right" data-bind="attr: { href: '?action=addToCart&id=' + id} " >
+                        <span class="glyphicon glyphicon-shopping-cart"></span>
+                        Add To Cart
+                </a>						
 			</div>
 		</div>
 	</div>
