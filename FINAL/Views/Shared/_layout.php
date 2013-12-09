@@ -49,7 +49,7 @@
                 <li><a href="../Opinion/">Opinions</a></li>
               </ul>
           </ul>
-          <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Nicholas Marion</a></p>
+          <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link"><? $user=Auth::GetUser(); echo $user['FirstName'];?> <?echo $user['LastName']; ?> - <? echo $user['Name'];?> </a></p>
         </div>
       </div>
     </div>

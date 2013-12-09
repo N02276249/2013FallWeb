@@ -9,7 +9,7 @@
 	<div data-bind="foreach: products" >
 		<div class="col-sm-3">
 			<div class="well clearfix">
-				<img alt="item image" height="128px" data-bind="attr: {src: ImgURL}" class="text-center"></img>
+				<img alt="item image" height="128px" data-bind="attr: {src: ImgURL}"></img>
 				<h4 data-bind="text: ManufactureName"></h4> <h4 data-bind="text: Model"></h4>
 				<p data-bind="text: Description"></p>
 				<button type="button" class="btn btn-info btn disabled pull-left" data-bind="text: Price">Price</button>		

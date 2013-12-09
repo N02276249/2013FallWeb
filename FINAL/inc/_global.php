@@ -1,5 +1,6 @@
 <?
 include_once('_password.php');
+session_start();
 include_once __DIR__ . '/../Models/Keywords.php';
 include_once __DIR__ . '/../Models/Users.php';
 include_once __DIR__ . '/../Models/ContactMethods.php';
@@ -11,6 +12,7 @@ include_once __DIR__ . '/../Models/Orders.php';
 include_once __DIR__ . '/../Models/Opinion.php';
 include_once __DIR__ . '/../Models/Wishlists.php';
 include_once __DIR__ . '/../Models/Front.php';
+include_once __DIR__ . '/../Models/Auth.php';
 
 
 function GetConnection()

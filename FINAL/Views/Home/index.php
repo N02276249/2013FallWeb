@@ -1,6 +1,5 @@
 <?php
 include_once '../../inc/_global.php';
-session_start();
 
 @$action = $_REQUEST['action'];
 @$format = $_REQUEST['format'];
