@@ -48,8 +48,8 @@
 				<img alt="item image" height="128px" data-bind="attr: {src: ImgURL}"></img>
 				<h4 data-bind="text: ManufactureName"></h4> <h4 data-bind="text: Model"></h4>
 				<p data-bind="text: Description"></p>
-				<button type="button" class="btn btn-info btn disabled pull-left" data-bind="text: Price">Price</button>		
-                <a class="btn btn-success pull-right" data-bind="click: $root.addToCart">
+				<button type="button" class="btn btn-info btn disabled pull-left" data-bind="text: Price">Price</button>
+                <a class="btn btn-success pull-right" data-bind="attr: { href: '?action=addToCart&id=' + P_id} ">
                         <span class="glyphicon glyphicon-shopping-cart"></span>
                         Add To Cart
                 </a>						
@@ -73,7 +73,7 @@
             </div>
             <br>
             <div>
-            	<a href="#" class="pull-right btn btn-success btn-sm" role="button">Buy Now</a>
+            	<a href="?action=cart" class="pull-right btn btn-success btn-sm" role="button">Buy Now</a>
             </div>
             
     </div>
@@ -83,9 +83,9 @@
 </div>
 <script type="text/html" id="shopping-cart-template">
         <span class="glyphicon glyphicon-shopping-cart"></span>
-        <a href="#" class="navbar-link" data-bind="click: toggleCartList">Cart</a>
-        <span class="badge" data-bind="text: cart().length"></span>
-</script>
+       		<a href="?action=cart" class="navbar-link">Cart</a>
+            <span class="badge"> <? $cart = $_SESSION['cart']; echo count($cart); ?> </span>
+        </script>
 
 
 <? function Scripts()

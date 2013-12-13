@@ -23,7 +23,7 @@
 				?>		Currently Not Available	<?			
 					}
 				?>
-					</dd>
+			</dd>
 		</dl>
 	</div>
 	

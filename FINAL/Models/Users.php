@@ -27,9 +27,9 @@ class Users
 		}
 	}
 
-	static public function GetSelectList()
+	static public function GetSelectList($id)
 	{
-		return fetch_all("Select FirstName, LastName, id FROM 2013NewFall_Users");
+		return fetch_all("Select FirstName, LastName, id FROM 2013NewFall_Users WHERE id=$id");
 	}
 	
 	

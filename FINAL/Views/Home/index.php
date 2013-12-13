@@ -16,15 +16,63 @@ switch ($action)
         $model	= Products::FrontType($_REQUEST['categoryID']);
 		break;
 		
+	case 'removeFromCart':
+		unset($_SESSION['cart'][$_REQUEST['id']]);
+		header('Location: ?action=cart');
+		break;
+		
 	case 'addToCart':
 		$cart = $_SESSION['cart'];
 		$cart[] = $_REQUEST['id'];
 		$_SESSION['cart'] = $cart;
-		header('Location: ?'); die();
+		header('Location: ?');
 		break;
  
+	case 'cart':
+		foreach ($_SESSION['cart'] as $value):
+			$cart[] = Products::Get($value['id']);
+		endforeach;		
+			
+		$view = "cart.php";
+		break;
+	
+	case 'purchase':
+		$view = "purchase.php";
+		break;
         
+	case 'logout':
+		session_destroy();
+		session_start();
+		$_SESSION['cart'] = array();
+		$view = "home.php";
+		break;
+		
+	case 'login':
+		$model = array('LastName' => null, 'Password' => null);    
+		$view = "login.php";
+		break;
+		
+	case 'submitLogin':
+		Auth::LogIn($_REQUEST['LastName'], $_REQUEST['Password']);
+		header("Location: ../Home/");			
+		
+		if(isset($_SESSION['url']) && $_SESSION['url'] != null)
+		{
+			$url = $_SESSION['url'];
+			$_SESSION['url'] = null;
+			header("Location: http://cs.newpaltz.edu/" . $url);
+		}
+		
+		else
+		{
+			$view="home.php";
+		} 
+    
+
+		break;
+		
  	default:
+		$model = array('LastName' => null, 'Password' => null); 
         $view	= 'home.php';
         $title	= "Store";
         break;

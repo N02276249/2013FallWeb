@@ -46,7 +46,16 @@
 				header('Location: ' . "../Auth?action=login");
 				die();
 			}
-		}			
+		}
+		
+		public static function HomeSecure()
+		{
+			if(!self::IsLoggedIn())
+			{
+				header('Location: ' . "../Home?action=login");
+				die();
+			}
+		}
 	}
 
 ?>
