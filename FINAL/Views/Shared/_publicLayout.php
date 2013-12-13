@@ -31,21 +31,20 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<b class="caret"></b></a>
               <ul class="dropdown-menu">
-              	<li><a href="../Orders/">Categories</a></li>
+              	<li><a href="../">Categories</a></li>
 
               </ul>
              </li>           
              
              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage Account<b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle compact" data-toggle="dropdown"><small><? $user=Auth::GetUser(); echo $user['FirstName'];?> <?echo $user['LastName']; ?><br /></small>Your Account <b class="caret"></b></a>
               <ul class="dropdown-menu">
-              	<li><a href="../Orders/">Manage Account</a></li>
+              	<li><a href="../">Manage Account</a></li>
 
               </ul>
-             </li>
-             
+             </li>  
           </ul>
-          <p class="navbar-text navbar-right" id="shopping-cart"><a href="#" class="navbar-link">Cart</a></p>
+          <p class="navbar-text pull-right" id="shopping-cart"><a href="#" class="navbar-link">Cart</a>
         </div>
       </div>
     </div>

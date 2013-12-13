@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My Website - <?=@$title?></title>
+    <title>Electronics 'R' Us - <?=@$title?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <style type="text/css">
@@ -12,7 +12,7 @@
   	
   	<header>
   		<div class="container">
- 		 <h1>My Website</h1>
+ 		 <h1></h1>
  		 </div>
   	</header>
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="../Front">Home</a>
+          <a class="navbar-brand" href="../Home">Home</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

@@ -10,7 +10,13 @@
 		
 		public static function GetUser()
 		{
-			return $_SESSION['User'];
+			if(isset($_SESSION['User']))
+			{
+				return $_SESSION['User'];
+			}
+			
+			else return null;
+			
 		}
 				
 		public static function HasPermission()

@@ -1,6 +1,5 @@
 <?php
 include_once '../../inc/_global.php';
-
 @$action = $_REQUEST['action'];
 @$format = $_REQUEST['format'];
 if(!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
@@ -11,7 +10,6 @@ switch ($action)
 	
 	case 'categories':
 		$model	= Keywords::GetSelectListFor(5);
-		
 		break;
 		
 	case 'products':
@@ -19,7 +17,6 @@ switch ($action)
 		break;
 		
 	case 'addToCart':
-
 		$cart = $_SESSION['cart'];
 		$cart[] = $_REQUEST['id'];
 		$_SESSION['cart'] = $cart;
