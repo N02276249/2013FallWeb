@@ -32,6 +32,17 @@ class Users
 		return fetch_all("Select FirstName, LastName, id FROM 2013NewFall_Users WHERE id=$id");
 	}
 	
+	static public function UpdatePassword($row)
+	{
+		$conn = GetConnection();
+		$sql = 	" UPDATE 2013NewFall_Users "
+			.	" SET Password = '$row[Password]' "
+			.	" WHERE id = $row[id] ";
+		$conn->query($sql);
+		$error = $conn->error;
+		$conn->close();			
+	}
+	
 	
 	static public function Save($row)
 	{

@@ -3,9 +3,6 @@
 </style>
 
 <div class="container">
-	<a href="?action=newUser" class="btn btn-info">Not a Member? Sign Up!</a>
-	<br>
-	<br>
 	
 	<? if (isset($errors) && $errors): ?>
 		<ul class="error">
@@ -16,8 +13,16 @@
 			<? endforeach; ?>
 		</ul>
 	<? endif; ?>
-	<form action="?action=submitLogin" method="post" class="form-horizontal row">
+	<form action="?action=saveUser" method="post" class="form-horizontal row">
+		<input type="hidden" name="UserType" value="8" />
 		
+		<div class="form-group <?= isset($errors['FirstName']) ? 'has-error' : '' ?>">
+			<label for="FirstName" class="col-sm-2 control-label">First Name</label>
+			<div class="col-sm-10">
+				<input type="text" name="FirstName" id="FirstName" placeholder="First Name" class="form-control" value="<?=$model['FirstName']?>"/>
+				<? if(isset($errors['FirstName'])): ?><span class ="error"><?=$errors['FirstName'] ?></span><? endif;?>
+			</div>
+		</div>
 
 		<div class="form-group <?= isset($errors['LastName']) ? 'has-error' : '' ?>">
 			<label for="LastName" class="col-sm-2 control-label">Last Name</label>
@@ -37,9 +42,15 @@
 						
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-lg-10">
-				<input type="submit" class="form-control btn btn-primary" value="Login"/>
+				<input type="submit" class="form-control btn btn-primary" value="Save"/>
 			</div>
 		</div>		
 	</form>
 </div>
+
+<script type="text/javascript">
+        $(function(){
+                $("#UserType").val(<?=$model['UserType']?>);
+        })        
+</script>
 

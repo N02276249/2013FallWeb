@@ -35,20 +35,7 @@ class Front
 					" Values ('$row[product_price]', '1', '$row[product_id]', '$random')";
 						
 		$conn->query($sql);
-		$error = $conn->error;
-		
-/*			$sql = " SELECT O.id, O.OrderNumber, OD.Orders_id, OD.OrderNumber FROM 2013NewFall_Orders O JOIN 2013NewFall_OrderDetails OD WHERE O.OrderNumber = OD.OrderNumber";
-			
-		$conn->query($sql);
-		$error = $conn->error;
-		
-			$sql = " UPDATE 2013NewFall_OrderDetails SET `Orders_id`='O.id' WHERE `OD.OrderNumber`='O.OrderNumber'";
-			
-		$conn->query($sql);
-		$error = $conn->error;
- */
-	
-					
+		$error = $conn->error;					
 		$conn -> close();
 
 		if ($error) {

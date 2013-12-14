@@ -39,6 +39,44 @@ class Orders
 	}
 
 
+	static public function FinalSale($row, $orderNumber) 
+	{
+		@$orderDate = date('Y-m-d');
+		@$shipDate = date('Y-m-d', strtotime("+3 days"));
+		$conn = GetConnection();
+			$sql = " Insert Into 2013NewFall_Orders (`Payments_id`, `2013NewFall_Users_id`, `Address_id`, `OrderNumber`, `OrderDate`, `ShipDate`)" . 
+					" Values ('$row[Payments_id]', '$row[Users_id]', '$row[Address_id]', '$orderNumber', '$orderDate', '$shipDate') ";
+									
+						
+		$conn->query($sql);
+		$error = $conn->error;					
+		$conn -> close();
+
+		if ($error) {
+			return array('db_error' => $error);
+		} else {
+			return false;
+		}
+	}
+	
+		static public function FinalSaleDetails($row, $orderNumber) 
+	{
+		$conn = GetConnection();
+			$sql = " Insert Into 2013NewFall_OrderDetails (`QuotedPrice`, `RequestedQuantity`, `Products_id`, `OrderNumber`) " . 
+					" Values ('$row[Price]', '1', '$row[id]', '$orderNumber')";
+					
+		echo $sql;
+		$conn->query($sql);
+		$error = $conn->error;					
+		$conn -> close();
+
+		if ($error) {
+			return array('db_error' => $error);
+		} else {
+			return false;
+		}
+	}
+
 	static public function Save($row) 
 	{
 		$conn = GetConnection();

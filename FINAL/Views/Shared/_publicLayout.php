@@ -32,10 +32,12 @@
              <li class="dropdown">
               <a href="#" class="dropdown-toggle compact" data-toggle="dropdown"><small><? $user=Auth::GetUser(); echo $user['FirstName'];?> <?echo $user['LastName']; ?><br /></small>Your Account <b class="caret"></b></a>
               <ul class="dropdown-menu">
-              	<li><a href="#">Manage Account</a></li>
               	<? if (Auth::GetUser() != null)
 				{
-					?><li><a href="?action=logout">Logout</a></li><?
+					?>
+						<li><a href="?action=manage">Manage Account</a></li>
+						<li><a href="?action=logout">Logout</a></li>
+					<?
 				}
 				
 				else 

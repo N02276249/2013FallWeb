@@ -32,8 +32,13 @@ class Products
 
 	static public function GetSelectList()
 	{
-		return fetch_all("Select id, Model FROM 2013NewFall_Products");
+		return fetch_all("Select id AS P_id, Model FROM 2013NewFall_Products");
 	}	
+	
+	static public function FinalPurchase($id)
+	{
+		return fetch_all("Select id, Price FROM 2013NewFall_Products WHERE id=$id");
+	}		
 	
 	static public function FrontAll()
 	{

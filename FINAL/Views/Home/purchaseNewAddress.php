@@ -15,9 +15,6 @@
 	<? endif;?>
 	<form action="?action=saveAddress" method="post" class="form-horizontal row">
 		
-		<input type="hidden" name="product_id" value="<?=$product['P_id'] ?>" />
-		<input type="hidden" name="product_price" value="<?=$product['Price'] ?>" />
-		
 		<div class="form-group <?= isset($errors['']) ? 'has-error' : '' ?>">
 			<label for="Street1" class="col-sm-2 control-label">Street 1</label>
 			<div class="col-sm-10">

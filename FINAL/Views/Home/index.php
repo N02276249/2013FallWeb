@@ -53,8 +53,7 @@ switch ($action)
 		break;
 		
 	case 'submitLogin':
-		Auth::LogIn($_REQUEST['LastName'], $_REQUEST['Password']);
-		header("Location: ../Home/");			
+		Auth::LogIn($_REQUEST['LastName'], $_REQUEST['Password']);			
 		
 		if(isset($_SESSION['url']) && $_SESSION['url'] != null)
 		{
@@ -67,10 +66,109 @@ switch ($action)
 		{
 			$view="home.php";
 		} 
-    
-
 		break;
 		
+	case 'manage':
+		$view = "manage.php";
+		break;
+
+	case 'updatePassword':
+		Users::UpdatePassword($_REQUEST);
+		$view = "manage.php";
+		break;
+		
+	case 'newUser':
+        $model      = Users::Blank();
+		$view 		= 'purchaseNewUser.php';
+		$title		= "Create A New User";
+		break;	
+		
+	case 'newAddress':
+
+		$model		= Addresses::Blank();
+		$view		= 'purchaseNewAddress.php';
+		$titl		= "Create New Address";		
+		break;
+		
+	case 'newPayment':	
+		$model		= Payments::Blank();
+		$view		= 'purchaseNewPayment.php';
+		$titl		= "Create New Payment";		
+		break;				
+		
+		
+		
+	case 'saveUser':
+		$errors = Users::Validate($_REQUEST);
+		if(!$errors)
+		{
+			$errors = Users::Save($_REQUEST);
+		}
+
+		if(!$errors)
+		{
+			header("Location: ?action=login");
+			die();		
+		}
+		
+		$model	= $_REQUEST;
+		$view	= 'purchaseNewUser.php';
+		$title	= "Edit New User" ;
+		break;			
+		
+	case 'saveAddress':
+		$errors = Addresses::Validate($_REQUEST);
+		if(!$errors)
+		{
+			$errors = Addresses::Save($_REQUEST);
+		}
+
+		if(!$errors)
+
+		{
+			header("Location: ?action=manage");
+			die();		
+		}
+		
+		$model	= $_REQUEST;
+		$view	= 'purchaseNewAddress.php';
+		$title	= "Edit New Address";
+		break;
+		
+	case 'savePayment':
+		$errors = Payments::Validate($_REQUEST);
+		if(!$errors)
+		{
+			$errors = Payments::Save($_REQUEST);
+		}
+
+		if(!$errors)
+		{
+			header("Location: ?action=manage");
+			die();		
+		}
+		
+		$model	= $_REQUEST;
+		$view	= 'purchaseNewPayment.php';
+		$title	= "Edit New Payment";
+		break;						
+		
+	case 'finalPurchase':
+		$random = @date('U');
+
+		Orders::FinalSale($_REQUEST, $random);
+		
+		foreach ($_SESSION['cart'] as $value):
+			$cart[] = Products::Get($value['id']);
+		endforeach;		
+		
+		foreach ($cart as $value):
+			Orders::FinalSaleDetails($value, $random);
+		endforeach;
+		$view = "home.php";
+		break;
+		
+				
  	default:
 		$model = array('LastName' => null, 'Password' => null); 
         $view	= 'home.php';

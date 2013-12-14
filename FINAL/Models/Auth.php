@@ -46,6 +46,14 @@
 				header('Location: ' . "../Auth?action=login");
 				die();
 			}
+			
+			$user=Auth::GetUser();
+			
+			if(isset($user) && $user['Name'] == 'Customers')
+			{
+				header('Location: ' . "../Home");
+				die();
+			}
 		}
 		
 		public static function HomeSecure()
