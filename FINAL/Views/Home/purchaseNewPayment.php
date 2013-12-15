@@ -28,7 +28,7 @@
 		<div class="form-group <?= isset($errors['Expiration']) ? 'has-error' : '' ?>">
 			<label for="Expiration" class="col-sm-2 control-label">Expiration</label>
 			<div class="col-sm-10">
-				<input type="text" name="Expiration" id="Expiration" placeholder="Expiration" class="form-control" value="<?=$model['Expiration'] ?>" />
+				<input type="text" name="Expiration" id="Expiration" placeholder="YYYY-MM-DD" class="form-control" value="<?=$model['Expiration'] ?>" />
 				<? if(isset($errors['Expiration'])): ?><span class ="error"><?=$errors['Expiration'] ?></span><? endif; ?>		
 			</div>
 		</div>
@@ -81,4 +81,6 @@
 			</div>
 		</div>		
 	</form>
+	
+	<a href="javascript:history.back()" class="btn btn-success">Back</a>
 </div>

@@ -16,6 +16,30 @@
  		 </div>
   	</header>
   	<div class="container">
+  		  	        <? if(isset($_REQUEST['status']) && $_REQUEST['status'] == 'success'): ?>
+  		  	        <div class="span4">
+                		<div class="alert alert-success">
+                        	<a class="close" data-dismiss="alert">×</a>
+                        	<b>Success!</b> You've added the item to your cart.
+                		</div>
+            		</div>        
+       				<? endif; ?>
+  		  	        <? if(isset($_REQUEST['logout']) && $_REQUEST['logout'] == 'success'): ?>
+  		  	        <div class="span4">
+                		<div class="alert alert-success">
+                        	<a class="close" data-dismiss="alert">×</a>
+                        	<b>You have been successfully logged out!</b>
+                		</div>
+            		</div>        
+       				<? endif; ?>
+  		  	        <? if(isset($_REQUEST['created']) && $_REQUEST['created'] == 'success'): ?>
+  		  	        <div class="span4">
+                		<div class="alert alert-success">
+                        	<a class="close" data-dismiss="alert">×</a>
+                        	<b>Your <?=$_REQUEST['new']?> was successfully added.</b>
+                		</div>
+            		</div>        
+       				<? endif; ?>       				
         <div class="navbar navbar-default">
       
         <div class="navbar-header">
@@ -29,24 +53,27 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">      
              
-             <li class="dropdown">
-              <a href="#" class="dropdown-toggle compact" data-toggle="dropdown"><small><? $user=Auth::GetUser(); echo $user['FirstName'];?> <?echo $user['LastName']; ?><br /></small>Your Account <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-              	<? if (Auth::GetUser() != null)
-				{
-					?>
+             <?if (Auth::GetUser() != null)
+             {?>
+				<li class="dropdown">	
+             		<a href="#" class="dropdown-toggle compact" data-toggle="dropdown"><small><? $user=Auth::GetUser(); echo $user['FirstName'];?> <?echo $user['LastName']; ?><br /></small>Your Account <b class="caret"></b></a>
+					<ul class="dropdown-menu">	
 						<li><a href="?action=manage">Manage Account</a></li>
 						<li><a href="?action=logout">Logout</a></li>
-					<?
-				}
-				
-				else 
-				{
-						?><li><a href="?action=login">Login</a></li><?
-				}
-				?>
-				</ul>
-             </li>
+					</ul>
+             	</li>
+             <?}
+			 
+			else 
+			{?>
+			<li>
+          	    <a href="?action=login">Login</a>
+			</li>
+          	<li>
+          		<a href="?action=newUser">Signup</a>
+			</li>          		
+			<? } ?>
+
              <?if(isset($user) && $user['Name'] == 'Admin')
 				{?>
 			<li>

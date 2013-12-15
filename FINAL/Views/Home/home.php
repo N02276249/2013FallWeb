@@ -56,7 +56,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="shopping-cart-list" class="closed" >
+	<!--<div id="shopping-cart-list" class="closed" >
             <div class="scrolling" data-bind="foreach: cart" >
                     <div class="well well-sm clearfix">
                             <img alt="item image" data-bind="attr: {src: ImgURL}" />
@@ -76,7 +76,7 @@
             	<a href="?action=cart" class="pull-right btn btn-success btn-sm" role="button">Buy Now</a>
             </div>
             
-    </div>
+ </div>-->
 	
 	
 	

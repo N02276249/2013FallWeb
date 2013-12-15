@@ -25,7 +25,7 @@ switch ($action)
 		$cart = $_SESSION['cart'];
 		$cart[] = $_REQUEST['id'];
 		$_SESSION['cart'] = $cart;
-		header('Location: ?');
+		header('Location: ?status=success');
 		break;
  
 	case 'cart':
@@ -33,6 +33,12 @@ switch ($action)
 			$cart[] = Products::Get($value['id']);
 		endforeach;		
 			
+		$view = "cart.php";
+		break;
+	
+	case 'emptyCart':
+		unset($_SESSION['cart']);
+		$_SESSION['cart'] = array();
 		$view = "cart.php";
 		break;
 	
@@ -44,11 +50,12 @@ switch ($action)
 		session_destroy();
 		session_start();
 		$_SESSION['cart'] = array();
-		$view = "home.php";
+		header("Location: ./?logout=success");
 		break;
 		
 	case 'login':
-		$model = array('LastName' => null, 'Password' => null);    
+			$model = array('LastName' => null, 'Password' => null);	
+		 
 		$view = "login.php";
 		break;
 		
@@ -73,9 +80,22 @@ switch ($action)
 		break;
 
 	case 'updatePassword':
-		Users::UpdatePassword($_REQUEST);
-		$view = "manage.php";
-		break;
+		$errors = Users::Validate($_REQUEST);
+		if(!$errors)
+		{
+			$errors = Users::Save($_REQUEST);
+		}
+
+		if(!$errors)
+		{
+			header("Location: ?action=manage");
+			die();		
+		}
+		
+		$model	= $_REQUEST;
+		$view	= 'manage.php';
+		$title	= "Update Password" ;
+		break;	
 		
 	case 'newUser':
         $model      = Users::Blank();
@@ -107,7 +127,7 @@ switch ($action)
 
 		if(!$errors)
 		{
-			header("Location: ?action=login");
+			header("Location: ?action=submitLogin&LastName=" . $_REQUEST['LastName'] . "&Password=" . $_REQUEST['Password'] . "&created=success&new=User");
 			die();		
 		}
 		
@@ -126,8 +146,13 @@ switch ($action)
 		if(!$errors)
 
 		{
-			header("Location: ?action=manage");
-			die();		
+			if(isset($_SESSION['url']) && $_SESSION['url'] != null)
+			{
+				$url = $_SESSION['url'];
+				$_SESSION['url'] = null;
+				header("Location: http://cs.newpaltz.edu/" . $url . "&created=success&new=Address");
+				die();
+			}
 		}
 		
 		$model	= $_REQUEST;
@@ -143,9 +168,15 @@ switch ($action)
 		}
 
 		if(!$errors)
+
 		{
-			header("Location: ?action=manage");
-			die();		
+			if(isset($_SESSION['url']) && $_SESSION['url'] != null)
+			{
+				$url = $_SESSION['url'];
+				$_SESSION['url'] = null;
+				header("Location: http://cs.newpaltz.edu/" . $url . "&created=success&new=Payment");
+				die();
+			}
 		}
 		
 		$model	= $_REQUEST;
@@ -165,7 +196,9 @@ switch ($action)
 		foreach ($cart as $value):
 			Orders::FinalSaleDetails($value, $random);
 		endforeach;
-		$view = "home.php";
+		unset($_SESSION['cart']);
+		$_SESSION['cart'] = array();
+		$view = "receipt.php";
 		break;
 		
 				

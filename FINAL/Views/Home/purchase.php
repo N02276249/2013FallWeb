@@ -1,4 +1,5 @@
 <?Auth::HomeSecure();?>
+<?$_SESSION['url'] = $_SERVER['REQUEST_URI'];?>
 <style type="text/css">
         .error {
                 color: red;
@@ -20,12 +21,19 @@
                         <? endforeach; ?>
                 </ul>
         <? endif; ?>
-        <? print_r($_SESSION['cart']);?>
+		<br><br> 
         <form action="?action=finalPurchase" method="post" class="form-horizontal row">
                 
-		<td class="col-sm-1 col-md-1 text-left"><strong><?=$user['FirstName']?> <?=$user['LastName']?></strong></td> 
+
 		
-				<input type="hidden" name="Users_id" value="<?=$user['id'] ?>" />	    
+				<input type="hidden" name="Users_id" value="<?=$user['id'] ?>" />	
+				
+				<div class="form-group ">
+                        <label for="UserName" class="col-sm-2 control-label">User</label>
+                        <div class="col-sm-10">
+                                <input type="text" name="UserName" id="UserName" placeholder="UserName" class="form-control " value="<?=$user['FirstName'] ?> <?=$user['LastName'] ?>"  readonly/>
+                                                  </div>
+                </div>    
                 
                 <div class="form-group <?= isset($errors['Address_id']) ? 'has-error' : '' ?>">
                         <label for="Address_id" class="col-sm-2 control-label">Address</label>

@@ -2,11 +2,7 @@
 	.error { color: red; }
 </style>
 
-<div class="container">
-	<a href="?action=newUser" class="btn btn-info">Not a Member? Sign Up!</a>
-	<br>
-	<br>
-	
+<div class="container">	
 	<? if (isset($errors) && $errors): ?>
 		<ul class="error">
 			<? foreach ($errors as $key => $value): ?>
@@ -16,6 +12,7 @@
 			<? endforeach; ?>
 		</ul>
 	<? endif; ?>
+	
 	<form action="?action=submitLogin" method="post" class="form-horizontal row">
 		
 
@@ -23,7 +20,7 @@
 			<label for="LastName" class="col-sm-2 control-label">Last Name</label>
 			<div class="col-sm-10">
 				<input type="text" name="LastName" id="LastName" placeholder="Last Name" class="form-control" value="<?=$model['LastName']?>" />
-				<? if(isset($errors['LastName'])): ?><span class ="error"><?=$errors['LastName'] ?></span><? endif;?>		
+				<? if(isset($_SESSION['loginUserError'])): ?><span class ="error"><?=$_SESSION['loginUserError']?></span><? endif;?>		
 			</div>
 		</div>
 		
@@ -31,7 +28,7 @@
 			<label for="Password" class="col-sm-2 control-label">Password</label>
 			<div class="col-sm-10">
 				<input type="password" name="Password" id="Password" placeholder="Password" class="form-control" value="<?=$model['Password']?>" />		
-				<? if(isset($errors['Password'])): ?><span class ="error"><?=$errors['Password'] ?></span><? endif;?>					
+				<? if(isset($_SESSION['loginPasswordError'])): ?><span class ="error"><?=$_SESSION['loginPasswordError']?></span><? endif;?>			
 			</div>
 		</div>
 						

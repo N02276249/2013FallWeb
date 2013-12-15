@@ -76,17 +76,32 @@
                         <td>   </td>
                         <td>   </td>
                         <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong><?$finalCost=($subtotal + $shipping);?></strong></h3></td>
+                        <td class="text-right"><h3><strong><?$finalCost=($subtotal + $shipping); echo $finalCost;?></strong></h3></td>
                     </tr>
                     <tr>
-                        <td>   </td>
+                        <?if(!empty($cart))
+                        {?>
+                        <td>
+                        	<a href="?action=emptyCart" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>Empty Cart</a></td>
+                        <? } 
+                        else 
+                        {
+                        	?><td></td><?
+                        }?>
                         <td>   </td>
                         <td>   </td>
                         <td>
-                        	<a href="./" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
+                        	<a href="?action=" class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span>Continue Shopping</a>
                         </td>
+                        <?if(!empty($cart))
+                        {?>
                         <td>
                         	<a href="?action=purchase&total=<?=$finalCost?>" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span>Checkout</a></td>
+                        <? } 
+                        else 
+                        {
+                        	?><td></td><?
+                        }?>
                     </tr>
                 </tbody>
             </table>

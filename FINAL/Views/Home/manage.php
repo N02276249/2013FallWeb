@@ -3,7 +3,8 @@
 </style>
 
 <div class="container">
-	<?$user=Auth::GetUser();?>
+<?$user=Auth::GetUser();?>
+<?$_SESSION['url'] = $_SERVER['REQUEST_URI'];?>
 	
 	<? if (isset($errors) && $errors): ?>
 		<ul class="error">
@@ -19,7 +20,9 @@
 	
 	<form action="?action=updatePassword" method="post" class="form-horizontal row">
 		<input type="hidden" name="id" value="<?=$user['id'] ?>" />		
-		
+		<input type="hidden" name="FirstName" value="<?=$user['FirstName'] ?>" />
+		<input type="hidden" name="LastName" value="<?=$user['LastName'] ?>" />
+		<input type="hidden" name="UserType" value="<?=$user['UserType'] ?>" />
 		<div class="form-group <?= isset($errors['Password']) ? 'has-error' : '' ?>">
 			<label for="Password" class="col-sm-2 control-label">Password</label>
 			<div class="col-md-4">

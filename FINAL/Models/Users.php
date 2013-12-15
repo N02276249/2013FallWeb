@@ -86,6 +86,7 @@ class Users
 		$errors = array();
 		if (!$row['FirstName']) $errors['FirstName'] = ' is required';
 		if (!$row['LastName']) $errors['LastName'] = ' is required';
+		if (!$row['Password']) $errors['Password'] = ' is required';
 		if (!isset($row['UserType'])) $errors['UserType'] = ' is required';
 		
 		if(count($errors) == 0)

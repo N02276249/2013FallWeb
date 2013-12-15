@@ -42,8 +42,12 @@ function fetch_all($sql)
 function fetch_one($sql)
 {
 	$arr = fetch_all($sql);
+	
 //	print_r($sql);
-	return $arr[0];
+	if ($arr != null)
+	{
+		return $arr[0];
+	}
 }
 
 ?>

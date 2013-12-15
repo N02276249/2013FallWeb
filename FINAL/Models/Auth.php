@@ -18,12 +18,6 @@
 			else return null;
 			
 		}
-				
-		public static function HasPermission()
-		{
-			$user = self::GetUser();
-			return $user['UserType'] == ADMIN;
-		}	
 
 		public static function LogIn($userName, $password)
 		{
@@ -33,10 +27,24 @@
 						WHERE U.LastName='$userName'
 					";
 			$user = fetch_one($sql);
-			if($user['Password'] == $password)
+			if($user == null)
+			{	
+				$_SESSION['loginUserError'] = "That User Doesn't Exist";
+				unset($_SESSION['loginPasswordError']);
+				header("Location: ?action=login");
+			}
+			else if($user['Password'] == $password)
 			{
 				$_SESSION['User'] = $user;	
+				unset($_SESSION['loginPasswordError']);
 			}
+			else
+			{
+				unset($_SESSION['loginUserError']);
+				$_SESSION['loginPasswordError'] = "Password is incorrect";	
+				header("Location: ?action=login");
+			}
+			
 		}		
 		
 		public static function Secure()

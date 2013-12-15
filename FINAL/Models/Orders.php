@@ -65,7 +65,6 @@ class Orders
 			$sql = " Insert Into 2013NewFall_OrderDetails (`QuotedPrice`, `RequestedQuantity`, `Products_id`, `OrderNumber`) " . 
 					" Values ('$row[Price]', '1', '$row[id]', '$orderNumber')";
 					
-		echo $sql;
 		$conn->query($sql);
 		$error = $conn->error;					
 		$conn -> close();

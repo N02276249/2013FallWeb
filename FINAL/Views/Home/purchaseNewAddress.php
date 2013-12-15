@@ -79,4 +79,5 @@
 			</div>
 		</div>		
 	</form>
+	<a href="javascript:history.back()" class="btn btn-success">Back</a>
 </div>

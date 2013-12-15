@@ -1,7 +1,7 @@
 <tr>
 	<td><?=$value['OrderNumber']?></td> 
 	<td><?=$value['LastName']?>, <?=$value['FirstName']?></td> 
-	<td><?=$value['Street1']?> <?=$value['Street2']?>, <?=$value['State']?>, <?=$value['Zip']?></td>
+	<td><?=$value['Street1']?> <?=$value['Street2']?>, <?=$value['City']?>, <?=$value['State']?>, <?=$value['Zip']?></td>
 	<td>XXXX-XXXX-XXXX-<?=substr($value['Number'], -4);?> EXP: <?=substr($value['Expiration'], 0, -3);?></td>
 	<td><?=$value['ManufactureName']?> <?=$value['Model']?></td>
 	<td><?=$value['Price']?></td>
