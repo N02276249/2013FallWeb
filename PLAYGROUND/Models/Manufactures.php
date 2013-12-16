@@ -3,42 +3,42 @@
 /**
  * 
  */
-class Keywords
+class Manufactures
 {
 	static public function Get($id=null)
 	{
 		if (isset($id))
 		{
-			return fetch_one("SELECT * FROM 2013NewFall_Keywords WHERE id='$id'");
+			return fetch_one("SELECT * FROM 2013NewFall_Manufactures WHERE id='$id'");
 		}
 		
 		else 
 		{
-			return fetch_all('SELECT * FROM 2013NewFall_Keywords');	
+			return fetch_all('Select *, M.id AS M_id, P.id AS P_id, K.id AS K_id From 2013NewFall_Manufactures M  left join 2013NewFall_Products P on M.id = P.Manufacture_id left join 2013NewFall_Keywords K on P.ProductType = K.id');
 		}
 		
 	}		
 	
-	static public function GetSelectListFor($id)
+	static public function GetSelectList()
 	{
-		return fetch_all("Select id, Name, Parent_id FROM 2013NewFall_Keywords WHERE Parent_id = $id ");
+		return fetch_all("Select ManufactureName, id FROM 2013NewFall_Manufactures");
 	}
 	
 	static public function Save($row)
 	{
 		$conn = GetConnection();		
-		$row2 = Keywords::Encode($row, $conn);
+		$row2 = Manufactures::Encode($row, $conn);
 		if ($row['id'])
 		{
-			$sql =  " UPDATE 2013NewFall_Keywords "
-				.	" Set Name = '$row2[Name]', Parent_id = '$row2[Parent_id]'"
+			$sql =  " UPDATE 2013NewFall_Manufactures "
+				.	" Set ManufactureName = '$row2[ManufactureName]'"
 				.	" WHERE id = $row2[id] ";
 		}
 	
 		else 
 		{
-			$sql = 	" Insert Into 2013NewFall_Keywords (Name, Parent_id) "
-				.	" Values ('$row2[Name]', '$row2[Parent_id]')";
+			$sql = 	" Insert Into 2013NewFall_Manufactures (ManufactureName) "
+				.	" Values ('$row2[ManufactureName]')";
 		}
 print_r($sql);		
 		$conn->query($sql);
@@ -58,15 +58,13 @@ print_r($sql);
 	
 	static public function Blank()
 	{
-		return array('id' => null, 'Name' => null, 'Parent_id' => null);
+		return array('id' => null, 'ManufactureName' => null);
 	}
 	
 	static public function Validate($row)
 	{
 		$errors = array();
-		if (!$row['Name']) $errors['Name'] = ' is required';
-		if (!$row['Parent_id'])	$errors['Parent_id'] = ' is required';
-		else if (!is_numeric($row['Parent_id']))	$errors['Parent_id'] = ' must be a number';
+		if (!$row['ManufactureName']) $errors['ManufactureName'] = ' is required';
 		
 		if(count($errors) == 0)
 		{
@@ -82,7 +80,7 @@ print_r($sql);
 	static public function Delete($id)
 	{
 		$conn = GetConnection();
-		$sql = " DELETE from 2013NewFall_Keywords WHERE id=$id ";
+		$sql = " DELETE from 2013NewFall_Manufactures WHERE id=$id ";
 		
 		$conn->query($sql);
 		$error = $conn->error;

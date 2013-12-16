@@ -2,7 +2,15 @@
 session_start();
 include_once __DIR__ . '/../Models/Keywords.php';
 include_once __DIR__ . '/../Models/Users.php';
+include_once __DIR__ . '/../Models/ContactMethods.php';
+include_once __DIR__ . '/../Models/Addresses.php';
+include_once __DIR__ . '/../Models/Payments.php';
 include_once __DIR__ . '/../Models/Products.php';
+include_once __DIR__ . '/../Models/Manufactures.php';
+include_once __DIR__ . '/../Models/Orders.php';
+include_once __DIR__ . '/../Models/Opinion.php';
+include_once __DIR__ . '/../Models/Wishlists.php';
+include_once __DIR__ . '/../Models/Front.php';
 include_once __DIR__ . '/../Models/Auth.php';
 
 
@@ -33,8 +41,12 @@ function fetch_all($sql)
 function fetch_one($sql)
 {
 	$arr = fetch_all($sql);
+	
 //	print_r($sql);
-	return $arr[0];
+	if ($arr != null)
+	{
+		return $arr[0];
+	}
 }
 
 ?>
