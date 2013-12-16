@@ -41,29 +41,38 @@
 			</div>
 		</div>
 		
-		<div class="form-group <?= isset($errors['Payments_id']) ? 'has-error' : '' ?>">
-			<label for="Payments_id" class="col-sm-2 control-label">Payments id</label>
-			<div class="col-sm-10">
-				<input type="text" name="Payments_id" id="Payments_id" placeholder="Payments_id" class="form-control" value="<?=$model['Payments_id']?>" />		
-				<? if(isset($errors['Payments_id'])): ?><span class ="error"><?=$errors['Payments id'] ?></span><? endif;?>					
-			</div>
-		</div>
-		
 		<div class="form-group <?= isset($errors['Users_id']) ? 'has-error' : '' ?>">
-			<label for="Users_id" class="col-sm-2 control-label">Users id</label>
+			<label for="Users_id" class="col-sm-2 control-label">Name</label>
 			<div class="col-sm-10">
-				<input type="text" name="Users_id" id="Users_id" placeholder="Users_id" class="form-control" value="<?=$model['Users_id']?>" />		
-				<? if(isset($errors['Users_id'])): ?><span class ="error"><?=$errors['Users id'] ?></span><? endif;?>					
+				<select name="Users_id" id="Users_id" class="form-control ">				
+					<? foreach (Users::GetSelectListBackend() as $UsersRs): ?>
+		            	<option value="<?=$UsersRs['id'] ?>"><?=$UsersRs['FirstName'] ?> <?=$UsersRs['LastName'] ?></option>
+					<? endforeach; ?>
+				</select>
 			</div>
-		</div>
+		</div>	
 		
 		<div class="form-group <?= isset($errors['Address_id']) ? 'has-error' : '' ?>">
-			<label for="Address_id" class="col-sm-2 control-label">Address ID</label>
+			<label for="Address_id" class="col-sm-2 control-label">Address</label>
 			<div class="col-sm-10">
-				<input type="text" name="Address_id" id="Address_id" placeholder="Address ID" class="form-control" value="<?=$model['Users_id']?>" />		
-				<? if(isset($errors['Address_id'])): ?><span class ="error"><?=$errors['Address_id'] ?></span><? endif;?>					
+				<select name="Address_id" id="Address_id" class="form-control ">				
+					<? foreach (Addresses::GetSelectListBackend() as $addressRs): ?>
+		            	<option value="<?=$addressRs['id'] ?>"><?=$addressRs['Street1'] ?></option>
+					<? endforeach; ?>
+				</select>
 			</div>
-		</div>
+		</div>	
+		
+		<div class="form-group <?= isset($errors['Payments_id']) ? 'has-error' : '' ?>">
+			<label for="Payments_id" class="col-sm-2 control-label">Payments</label>
+			<div class="col-sm-10">
+				<select name="Address_id" id="Payments_id" class="form-control ">				
+					<? foreach (Payments::GetSelectListBackend() as $paymentsRs): ?>
+		            	<option value="<?=$paymentsRs['id'] ?>"><?=$paymentsRs['Number'] ?></option>
+					<? endforeach; ?>
+				</select>
+			</div>
+		</div>			
 								
 			
 		<div class="form-group">

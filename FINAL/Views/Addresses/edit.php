@@ -76,7 +76,7 @@
 			<label for="Users_id" class="col-sm-2 control-label">Name</label>
 			<div class="col-sm-10">
 				<select name="Users_id" id="Users_id" class="form-control ">				
-					<? foreach (Users::GetSelectList() as $UsersRs): ?>
+					<? foreach (Users::GetSelectListBackend() as $UsersRs): ?>
 		            	<option value="<?=$UsersRs['id'] ?>"><?=$UsersRs['FirstName'] ?> <?=$UsersRs['LastName'] ?></option>
 					<? endforeach; ?>
 				</select>

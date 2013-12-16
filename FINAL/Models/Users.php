@@ -27,10 +27,15 @@ class Users
 		}
 	}
 
-	static public function GetSelectList($id)
+	static public function GetSelectList($id=null)
 	{
 		return fetch_all("Select FirstName, LastName, id FROM 2013NewFall_Users WHERE id=$id");
 	}
+	
+	static public function GetSelectListBackend()
+	{
+		return fetch_all("Select FirstName, LastName, id FROM 2013NewFall_Users");
+	}	
 	
 	static public function UpdatePassword($row)
 	{

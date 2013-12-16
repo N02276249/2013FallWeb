@@ -41,12 +41,15 @@
 		</div>
 		
 		<div class="form-group <?= isset($errors['Users_id']) ? 'has-error' : '' ?>">
-			<label for="Users_id" class="col-sm-2 control-label">User ID</label>
+			<label for="Users_id" class="col-sm-2 control-label">Name</label>
 			<div class="col-sm-10">
-				<input type="text" name="Users_id" id="Users_id" placeholder="User ID" class="form-control" value="<?=$model['Users_id']?>" />		
-				<? if(isset($errors['Users_id'])): ?><span class ="error"><?=$errors['Users_id'] ?></span><? endif;?>					
+				<select name="Users_id" id="Users_id" class="form-control ">				
+					<? foreach (Users::GetSelectListBackend() as $UsersRs): ?>
+		            	<option value="<?=$UsersRs['id'] ?>"><?=$UsersRs['FirstName'] ?> <?=$UsersRs['LastName'] ?></option>
+					<? endforeach; ?>
+				</select>
 			</div>
-		</div>
+		</div>	
 		
 								
 			

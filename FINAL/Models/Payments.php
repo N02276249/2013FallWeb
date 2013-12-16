@@ -35,6 +35,11 @@ class Payments
 	{
 		return fetch_all("Select Number, Expiration, P.id AS P_id, U.id AS U_id FROM 2013NewFall_Payments P JOIN 2013NewFall_Users U ON P.2013NewFall_Users_id = U.id WHERE U.id=$id");
 	}
+	
+	static public function GetSelectListBackend()
+	{
+		return fetch_all("Select Number FROM 2013NewFall_Payments P");
+	}	
 		
 	
 	static public function Save($row) 

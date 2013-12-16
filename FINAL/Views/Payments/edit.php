@@ -47,7 +47,7 @@
 			<label for="Users_id" class="col-sm-2 control-label">Name</label>
 			<div class="col-sm-10">
 				<select name="Users_id" id="Users_id" class="form-control ">				
-					<? foreach (Users::GetSelectList() as $UsersRs): ?>
+					<? foreach (Users::GetSelectListBackend() as $UsersRs): ?>
 		            	<option value="<?=$UsersRs['id'] ?>"><?=$UsersRs['FirstName'] ?> <?=$UsersRs['LastName'] ?></option>
 					<? endforeach; ?>
 				</select>
@@ -58,7 +58,7 @@
 			<label for="Address_id" class="col-sm-2 control-label">Address</label>
 			<div class="col-sm-10">
 				<select name="Address_id" id="Address_id" class="form-control ">				
-					<? foreach (Addresses::GetSelectList() as $addressRs): ?>
+					<? foreach (Addresses::GetSelectListBackend() as $addressRs): ?>
 		            	<option value="<?=$addressRs['id'] ?>"><?=$addressRs['Street1'] ?></option>
 					<? endforeach; ?>
 				</select>
