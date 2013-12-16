@@ -5,18 +5,13 @@ $con = mysqli_connect('localhost','n02276249','s768207','n02276249_db');
 if (!$con)
   {
   die('Could not connect: ' . mysqli_error($con));
-  }
-  
-mysqli_select_db($con,"ajax_demo");
-$sql="	SELECT U.id, U.FirstName, U.LastName FROM 2013NewFall_Users U";
-
-$users[] = mysqli_query($con,$sql);  
+  }  
 						
 mysqli_select_db($con,"ajax_demo");
 $sql="	SELECT U.*, K.Name, U.id AS U_id, K.id AS K_id
 						FROM 2013NewFall_Users U
 							JOIN 2013NewFall_Keywords K ON U.UserType = K.id
-						WHERE U.id='".$q."'";
+						WHERE K.id='".$q."'";
 
 $result = mysqli_query($con,$sql);
 
