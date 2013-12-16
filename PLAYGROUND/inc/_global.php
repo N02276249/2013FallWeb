@@ -17,7 +17,7 @@ include_once __DIR__ . '/../Models/Auth.php';
 function GetConnection()
 {
 	global $sql_password;
-	$conn = new mysqli('localhost', 'n02276249', 's768207', 'n02276249_db');	
+	$conn = new mysqli('localhost', 'n02276249', $sql_password, 'n02276249_db');	
 	return $conn;
 }
 
